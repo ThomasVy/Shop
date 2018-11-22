@@ -1,4 +1,4 @@
-package backend;
+package BackendLayer;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -19,6 +19,7 @@ public class Worker implements Runnable {
         try {
             out = new ObjectOutputStream(socketClient.getOutputStream());
             in = new ObjectInputStream(socketClient.getInputStream());
+            System.out.println("Connected to "+socketClient.getInetAddress());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,6 +51,7 @@ public class Worker implements Runnable {
     private void processRequest(String request)
     {
         try {
+            System.out.println(request);
             out.writeObject(request);
         } catch (IOException e) {
             e.printStackTrace();
