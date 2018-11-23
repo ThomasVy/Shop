@@ -1,4 +1,5 @@
 package PresentationLayer;
 
-public class StaffMember {
+public abstract class StaffMember {
+
 }

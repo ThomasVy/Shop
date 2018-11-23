@@ -1,4 +1,8 @@
 package DomainLayer;
 
-public class UploadPng {
+public class UploadPng implements Upload{
+    @Override
+    public String upload() {
+        return null;
+    }
 }

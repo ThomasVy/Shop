@@ -1,4 +1,5 @@
 package PresentationLayer;
 
-public class Manager {
+public class Manager extends StaffMember{
+    boolean isManager;
 }

@@ -2,39 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad4a0d38-e906-4ef4-8a53-1960240fff7e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/BackendLayer/CompanyDatabaseHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BackendLayer/DatabaseHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BackendLayer/DocumentDatabaseHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BackendLayer/UserDatabaseHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/Artwork.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/Author.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/BackgroundImageDecorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/ColourLayerDecorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/Cover.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/CoverBorderDecorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/Decorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/Document.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/Observer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/OnlineSystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/PromotionList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/Upload.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/UploadDocx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/UploadPdf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DomainLayer/UploadPng.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PresentationLayer/Manager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PresentationLayer/Operator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PresentationLayer/OrdinaryBuyer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PresentationLayer/RegisterBuyer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PresentationLayer/StaffMember.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PresentationLayer/SystemAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PresentationLayer/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PresentationLayer/UserInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DomainLayer/Page.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project1/backend/Worker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project1/backend/Worker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backend/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackendLayer/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backend/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackendLayer/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontEnd/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/Artwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/Artwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/Author.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/BackgroundImageDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/BackgroundImageDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/ColourLayerDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/ColourLayerDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/Cover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/Cover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/CoverBorderDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/CoverBorderDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/Decorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/Decorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/Document.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/Observer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/OnlineSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/OnlineSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/PromotionList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/PromotionList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/Upload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/Upload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/UploadDocx.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/UploadDocx.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/UploadPdf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/UploadPdf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DomainLayer/UploadPng.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainLayer/UploadPng.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Operator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Operator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/OrdinaryBuyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/OrdinaryBuyer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/RegisterBuyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/RegisterBuyer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/StaffMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/StaffMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/SystemAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/SystemAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/UserInterface.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,7 +38,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/PresentationLayer/RegisterBuyer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -73,12 +77,35 @@
         <option value="$PROJECT_DIR$/src/backend/UserDatabaseHelper.java" />
         <option value="$PROJECT_DIR$/src/BackendLayer/UserDatabaseHelper.java" />
         <option value="$PROJECT_DIR$/src/DomainLayer/OnlineSystem.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/PromotionList.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/Order.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/Author.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/Document.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/Cover.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/Artwork.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/Decorator.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/BackgroundImageDecorator.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/CoverBorderDecorator.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/ColourLayerDecorator.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/Observer.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/Upload.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/UploadDocx.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/UploadPdf.java" />
+        <option value="$PROJECT_DIR$/src/DomainLayer/UploadPng.java" />
+        <option value="$PROJECT_DIR$/src/PresentationLayer/OrdinaryBuyer.java" />
+        <option value="$PROJECT_DIR$/src/PresentationLayer/UserInterface.java" />
+        <option value="$PROJECT_DIR$/src/PresentationLayer/User.java" />
+        <option value="$PROJECT_DIR$/src/PresentationLayer/StaffMember.java" />
+        <option value="$PROJECT_DIR$/src/PresentationLayer/Operator.java" />
+        <option value="$PROJECT_DIR$/src/PresentationLayer/Manager.java" />
+        <option value="$PROJECT_DIR$/src/PresentationLayer/SystemAdmin.java" />
+        <option value="$PROJECT_DIR$/src/PresentationLayer/RegisterBuyer.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-15" />
-    <option name="y" value="-15" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="-18" />
+    <option name="y" value="15" />
     <option name="width" value="1630" />
     <option name="height" value="1740" />
   </component>
@@ -132,6 +159,18 @@
               <item name="Project1" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="BackendLayer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DomainLayer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="PresentationLayer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -145,7 +184,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542929552935" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542932825105" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
@@ -205,17 +244,26 @@
       <option name="presentableId" value="Default" />
       <updated>1542859443842</updated>
       <workItem from="1542859449217" duration="5487000" />
-      <workItem from="1542924925764" duration="3676000" />
+      <workItem from="1542924925764" duration="6762000" />
     </task>
+    <task id="LOCAL-00001" summary="Added all the class">
+      <created>1542929764109</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1542929764109</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9163000" />
+    <option name="totallyTimeSpent" value="12249000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1293" height="702" extended-state="6" />
+    <frame x="-7" y="6" width="652" height="696" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18704453" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3888889" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -248,6 +296,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added all the class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added all the class" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/io/ObjectInputStream.java">
@@ -284,13 +336,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DomainLayer/OnlineSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/BackendLayer/UserDatabaseHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -299,20 +344,6 @@
             <element signature="e#264#265#0" expanded="true" />
             <element signature="e#291#292#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DomainLayer/PromotionList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DomainLayer/Order.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -348,150 +379,202 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DomainLayer/Observer.java">
+    <entry file="file://$PROJECT_DIR$/src/DomainLayer/OnlineSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+        <state relative-caret-position="340">
+          <caret line="26" column="54" lean-forward="true" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DomainLayer/Author.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        <state relative-caret-position="102">
+          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DomainLayer/Cover.java">
+    <entry file="file://$PROJECT_DIR$/src/DomainLayer/Order.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DomainLayer/Document.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        <state relative-caret-position="238">
+          <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DomainLayer/Decorator.java">
+    <entry file="file://$PROJECT_DIR$/src/DomainLayer/Cover.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        <state relative-caret-position="17">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DomainLayer/Artwork.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        <state relative-caret-position="17">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DomainLayer/Decorator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DomainLayer/BackgroundImageDecorator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+        <state relative-caret-position="17">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DomainLayer/CoverBorderDecorator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
+        <state relative-caret-position="17">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DomainLayer/ColourLayerDecorator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PresentationLayer/RegisterBuyer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PresentationLayer/StaffMember.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PresentationLayer/User.java">
+    <entry file="file://$PROJECT_DIR$/src/DomainLayer/Page.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PresentationLayer/OrdinaryBuyer.java">
+    <entry file="file://$PROJECT_DIR$/src/DomainLayer/Observer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+        <state relative-caret-position="51">
+          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PresentationLayer/UserInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/DomainLayer/ColourLayerDecorator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DomainLayer/UploadPng.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DomainLayer/UploadPdf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DomainLayer/UploadDocx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        <state relative-caret-position="17">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DomainLayer/Upload.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        <state relative-caret-position="51">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PresentationLayer/Operator.java">
+    <entry file="file://$PROJECT_DIR$/src/DomainLayer/UploadDocx.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#106#107#0" expanded="true" />
+            <element signature="e#133#134#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PresentationLayer/SystemAdmin.java">
+    <entry file="file://$PROJECT_DIR$/src/DomainLayer/PromotionList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DomainLayer/UploadPdf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="20" />
+          <folding>
+            <element signature="e#106#107#0" expanded="true" />
+            <element signature="e#133#134#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DomainLayer/UploadPng.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#105#106#0" expanded="true" />
+            <element signature="e#132#133#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PresentationLayer/UserInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PresentationLayer/OrdinaryBuyer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PresentationLayer/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PresentationLayer/StaffMember.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PresentationLayer/Manager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PresentationLayer/Operator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PresentationLayer/SystemAdmin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PresentationLayer/RegisterBuyer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
         </state>
       </provider>
     </entry>

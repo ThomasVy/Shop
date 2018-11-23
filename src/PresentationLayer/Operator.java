@@ -1,4 +1,5 @@
 package PresentationLayer;
 
-public class Operator {
+public class Operator extends StaffMember{
+    boolean isOperator;
 }
