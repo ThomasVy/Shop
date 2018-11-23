@@ -1,4 +1,4 @@
 package DomainLayer;
 //TODO
-public class ColourLayerDecorator {
+public class ColourLayerDecorator extends Decorator {
 }

@@ -1,4 +1,4 @@
 package DomainLayer;
 //TODO
-public class Cover {
+public class Cover implements Artwork {
 }

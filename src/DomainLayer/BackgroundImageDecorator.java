@@ -1,4 +1,4 @@
 package DomainLayer;
 //TODO
-public class BackgroundImageDecorator {
+public class BackgroundImageDecorator extends Decorator{
 }

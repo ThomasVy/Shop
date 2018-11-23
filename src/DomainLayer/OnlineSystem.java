@@ -14,7 +14,7 @@ public class OnlineSystem {
     private ArrayList<RegisterBuyer> registeredBuyers;
     private ArrayList<StaffMember> staff;
 
-    public User login (){ return new User();}
+    public User login (){ return new RegisterBuyer();}
     public void placeOrder(Order order){}
     public Document searchForDocument(String query){return new Document();}
     public void registerOrdinaryBuyer(OrdinaryBuyer ordinaryBuyer){}

@@ -1,4 +1,4 @@
 package DomainLayer;
 //TODO
-public class Decorator {
+public class Decorator implements Artwork {
 }

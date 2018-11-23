@@ -1,5 +1,5 @@
 package PresentationLayer;
 
-public class RegisterBuyer {
+public class RegisterBuyer extends User{
     boolean subscription;
 }

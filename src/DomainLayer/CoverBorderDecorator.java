@@ -1,4 +1,4 @@
 package DomainLayer;
 //TODO
-public class CoverBorderDecorator {
+public class CoverBorderDecorator extends Decorator{
 }
