@@ -1,5 +1,7 @@
 package BackendLayer;
 
+import PresentationLayer.User;
+
 public class UserDatabaseHelper implements DatabaseHelper {
     @Override
     public void insert(Object object) {
@@ -21,7 +23,7 @@ public class UserDatabaseHelper implements DatabaseHelper {
 
     }
 
-    public verifyUser(User user)
+    public void verifyUser(User user)
     {
 
     }

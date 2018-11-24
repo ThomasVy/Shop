@@ -3,7 +3,6 @@ package BackendLayer;
 public class CompanyDatabaseHelper implements DatabaseHelper {
     @Override
     public void insert(Object object) {
-        //hello
     }
 
     @Override
