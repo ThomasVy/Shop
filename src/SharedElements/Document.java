@@ -1,6 +1,9 @@
-package DomainLayer;
+package SharedElements;
 
 import java.util.ArrayList;
+
+import DomainLayer.Author;
+import DomainLayer.Cover;
 
 public class Document {
     private int documentId;

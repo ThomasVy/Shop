@@ -1,4 +1,4 @@
-package PresentationLayer;
+package SharedElements;
 
 public class OrdinaryBuyer {
     int id;
