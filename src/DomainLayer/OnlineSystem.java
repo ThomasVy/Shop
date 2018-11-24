@@ -1,6 +1,13 @@
 package DomainLayer;
 
 import PresentationLayer.*;
+import SharedElements.Document;
+import SharedElements.Manager;
+import SharedElements.OrdinaryBuyer;
+import SharedElements.RegisterBuyer;
+import SharedElements.StaffMember;
+import SharedElements.SystemAdmin;
+import SharedElements.User;
 
 import java.util.ArrayList;
 

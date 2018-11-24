@@ -1,8 +1,9 @@
 package DomainLayer;
 
-import PresentationLayer.OrdinaryBuyer;
-
 import java.util.ArrayList;
+
+import SharedElements.Document;
+import SharedElements.OrdinaryBuyer;
 
 public class Order {
     private OrdinaryBuyer buyer;

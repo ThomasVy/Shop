@@ -1,8 +1,9 @@
 package DomainLayer;
 
-import PresentationLayer.RegisterBuyer;
-
 import java.util.ArrayList;
+
+import SharedElements.Document;
+import SharedElements.RegisterBuyer;
 
 public class PromotionList {
     private ArrayList<Document> listOfPromotions;
