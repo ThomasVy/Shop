@@ -78,12 +78,15 @@ public class OnlineSystem {
                         ui.showRegisteredHomePage();
                         promptRegisteredBuyerForMenuInput();
                     }
-                    else if (userCheck.getSimpleName().compareToIgnoreCase("Operator") == 0)
+                    else if (userCheck.getSimpleName().compareToIgnoreCase("Operator") == 0) {
                         ui.showOperatorHomePage();
-                    else
+                        promptOperatorForMenuInput();
+                    }
+                    else{
                         System.out.println("ERROR:" +
                                 userCheck.getSimpleName() +
                                 " user type home page not implemented");
+                    }
                     break;
                 } else if (option == 2) {
                     userType = 3;
@@ -150,9 +153,20 @@ public class OnlineSystem {
             try {
                 ui.showUnregisteredMenu();
                 option = reader.nextInt();
+                if (option == 5) {
+                    System.out.println("Have a nice day! Please comeback again");
+                    System.exit(1);
+                }
+                else if (option == 5) {
+                    ui.demoCoverArt();
+                }
+                else {
+                    System.out.println("Your entry was not an option try again!");
+                }
             }
             catch (InputMismatchException ex) {
                 System.out.println("Must be an integer value!");
+                reader.nextLine();
             }
     }
 
