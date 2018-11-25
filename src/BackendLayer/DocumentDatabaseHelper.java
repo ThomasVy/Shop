@@ -1,13 +1,18 @@
 package BackendLayer;
 
 import java.util.ArrayList;
+
+import DomainLayer.Author;
 import SharedElements.*;
 
 public class DocumentDatabaseHelper implements DatabaseHelper {
 	private ArrayList<Document> DocumentDatabase = new ArrayList<Document>();
 	
 	public DocumentDatabaseHelper() {
-		
+		// hardcoded for testing promotion list
+		ArrayList<Author> authors1 = new ArrayList<Author>();
+		authors1.add(new Author("Dave Pilkey"));
+		DocumentDatabase.add(new Document(1,"Captain Underpants", authors1 ));
 	}
 
 	public ArrayList<Document> getDocumentDatabase() {

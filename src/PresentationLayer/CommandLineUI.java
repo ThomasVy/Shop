@@ -1,8 +1,10 @@
 package PresentationLayer;
 
 import DomainLayer.*;
+import SharedElements.Document;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CommandLineUI implements UserInterface {
@@ -153,8 +155,15 @@ public class CommandLineUI implements UserInterface {
     }
 
     @Override
-    public void showPromotionListPage() {
+    public void showPromotionListPage(ArrayList<Document> promotionList) {
         System.out.println("Here is the list of all the promotions!");
+        for(Document promotion : promotionList) {
+            System.out.print("\n" + promotion.getName() + "  by");
+            for(Author author : promotion.getAuthors()) {
+                System.out.print("  " + author.getName());
+            }
+            System.out.print(" is on sale for 50% off" + "\n");
+        }
     }
 
     @Override
