@@ -39,29 +39,18 @@ public class CommandLineUI implements UserInterface {
             System.out.println(
                     "\nWelcome to BIG BOOK ENERGY.inc!"
             );
-            int option;
-            while(true){
-                System.out.println(
-                        "\nPlease select from the following options!" +
-                                "\n1. Search for a book" +
-                                "\n2. Place an order" +
-                                "\n3. Make a payment" +
-                                "\n4. Register" +
-                                "\n5. Demo cover art" +
-                                "\n6. Exit"
-                );
-                option = reader.nextInt();
-                if(option == 6) {
-                    System.out.println("\nHave a nice day! Please come back again");
-                    System.exit(1);
-                }
-                else if(option == 5) {
-                    demoCoverArt();
-                }
-                else {
-                    System.out.println("Your entry was not an option try again!");
-                }
-            }
+    }
+
+    public void showUnregisteredMenu() {
+            System.out.println(
+                    "\nPlease select from the following options!" +
+                            "\n1. Search for a book" +
+                            "\n2. Place an order" +
+                            "\n3. Make a payment" +
+                            "\n4. Register" +
+                            "\n5. Demo cover art" +
+                            "\n6. Exit"
+            );
     }
 
     @Override
@@ -70,30 +59,19 @@ public class CommandLineUI implements UserInterface {
         System.out.println(
                         "\nWelcome " + username + " to BIG BOOK ENERGY.inc!"
         );
+    }
 
-        int option;
-        while (true) {
-            System.out.println(
-                    "\nPlease select from the following options!" +
-                            "\n1. Search for a book" +
-                            "\n2. Place an order" +
-                            "\n3. Make a payment" +
-                            "\n4. See promotions List" +
-                            "\n5. Unsubscribe from promotions list" +
-                            "\n6. Demo cover art" +
-                            "\n7. Exit"
-            );
-            option = reader.nextInt();
-            if (option == 7) {
-                System.out.println("\nHave a nice day! Please comeback again");
-                System.exit(1);
-            }
-            else if(option == 6) {
-                demoCoverArt();
-            }else {
-                System.out.println("Your entry was not an option try again!");
-            }
-        }
+    public void showRegisteredMenu() {
+        System.out.println(
+                "\nPlease select from the following options!" +
+                        "\n1. Search for a book" +
+                        "\n2. Place an order" +
+                        "\n3. Make a payment" +
+                        "\n4. See promotions List" +
+                        "\n5. Unsubscribe from promotions list" +
+                        "\n6. Demo cover art" +
+                        "\n7. Exit"
+        );
     }
 
     @Override
