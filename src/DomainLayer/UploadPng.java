@@ -5,17 +5,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 public class UploadPng extends Upload{
-    @Override
-    public String upload() {
-        return null;
-    }
     /**
 	 * Writing file content to a place
 	 * @param a
 	 * @param content
 	 */
-	public void writeFileContent(byte[] content) {
+	public String writeFileContent(byte[] content) {
 		try {
+				String extension = "/Documents/"+"file" + counter++ + ".png";
 				File newFile = new File("temp");
 				newFile.createNewFile();
 				FileOutputStream writer = new FileOutputStream(newFile);
@@ -23,8 +20,9 @@ public class UploadPng extends Upload{
 				bos.write(content);
 				writer.close();
 				bos.close();
+				return extension;
 		} catch (Exception e) {
-			return;
+			return null;
 		}
 	}
 }

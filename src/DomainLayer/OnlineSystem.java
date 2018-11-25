@@ -5,6 +5,7 @@ import PresentationLayer.*;
 import SharedElements.*;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class OnlineSystem {
@@ -25,6 +26,7 @@ public class OnlineSystem {
     private PromotionList promotionList;
     private ArrayList<RegisteredBuyer> registeredBuyers;
     private ArrayList<StaffMember> staff;
+    private ArrayList<Document> documents;
 
     private OnlineSystem() {
     }
@@ -203,8 +205,7 @@ public class OnlineSystem {
 
     }
 
-    public Document searchForDocument(String query) {
-        return new Document();
+    public void searchForDocument(String query) {
     }
 
     public void registerOrdinaryBuyer(OrdinaryBuyer ordinaryBuyer) {
@@ -220,7 +221,8 @@ public class OnlineSystem {
     }
 
     public void addDocument(Document document) {
-
+    	if (document.performUpload())
+    		ddh.getDocumentDatabase().add(document);
     }
 
     public void updateDocument(Document document) {
@@ -232,7 +234,7 @@ public class OnlineSystem {
     }
 
     public ArrayList<Document> getDocumentList() {
-        return new ArrayList<Document>();
+        return ddh.getDocumentDatabase();
     }
 
     public void submitForPrinting(Document document) {

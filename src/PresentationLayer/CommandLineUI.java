@@ -1,8 +1,10 @@
 package PresentationLayer;
 
 import DomainLayer.*;
-
+import SharedElements.*;
 import javax.swing.*;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CommandLineUI implements UserInterface {
@@ -57,7 +59,14 @@ public class CommandLineUI implements UserInterface {
                 }
                 else if(option == 7)
                 {
-                	OnlineSystem.getInstance().
+                	System.out.println("Please specify the file type");
+                	String type = reader.nextLine();
+                	while(!type.equalsIgnoreCase("PDF")&&!type.equalsIgnoreCase("DOCX")&&!type.equalsIgnoreCase("PNG"))
+                	{
+                		System.out.println("Please enter a valid type");
+                		type = reader.nextLine();
+                	}
+                	OnlineSystem.getInstance().addDocument(new Document(1, "hello", new ArrayList<Author>(), "10", type , 65));
                 }
                 else if(option == 5) {
                     demoCoverArt();
@@ -69,8 +78,7 @@ public class CommandLineUI implements UserInterface {
     }
 
     @Override
-    public void showRegisteredHomePage(String username) {
-    	this.username = username;
+    public void showRegisteredHomePage() {
         System.out.println(
                         "\nWelcome " + username + " to BIG BOOK ENERGY.inc!"
         );

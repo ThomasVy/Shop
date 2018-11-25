@@ -12,13 +12,13 @@ import javax.swing.JFileChooser;
 
 
 public abstract class Upload {
-    public abstract String upload();
-	public abstract void writeFileContent(byte[] content);
+	static int counter =0;
+	public abstract String writeFileContent(byte[] content);
 	/**
 	 * Open file browser
 	 * @param specifier
 	 */
-	private byte [] openFileBrowser() {
+	public byte [] openFileBrowser() {
 		JFileChooser fileBrowser = new JFileChooser();
 		if (fileBrowser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 			File selectedFile = fileBrowser.getSelectedFile();
@@ -42,25 +42,4 @@ public abstract class Upload {
 		}
 		return content;
 	}
-//	/**
-//	 * Gets the file content from the path
-//	 * @param path - the path of the file to be converted
-//	 * @return - the file converted into bytes
-//	 */
-//	public byte[] getFileContent(String path) { 
-//		File selectedFile = new File(path);
-//		long length = selectedFile.length();
-//		byte[] content = new byte[(int) length];
-//		try {
-//			FileInputStream fis = new FileInputStream(selectedFile);
-//			BufferedInputStream bos = new BufferedInputStream(fis);
-//			bos.read(content, 0, (int)length);
-//			bos.close();
-//			fis.close();
-//		} catch (Exception e)
-//		{
-//			
-//		}
-//		return content;
-//	}
 }
