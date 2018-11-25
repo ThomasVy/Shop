@@ -8,7 +8,7 @@ public class CoverPanel extends JPanel {
     Artwork art;
 
     public CoverPanel() {
-        art = new Cover("J:\\School\\softengyear3\\ENSF480\\ENSF480Project\\src\\seriousbook.jpg",60, 80);
+        art = new Cover("C:\\seriousbook.jpg",60, 80);
     }
 
     public void paintComponent(Graphics g) {

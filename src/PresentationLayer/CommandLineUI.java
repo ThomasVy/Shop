@@ -71,7 +71,7 @@ public class CommandLineUI implements UserInterface {
                 );
                 option = reader.nextInt();
                 if(option == 6) {
-                    System.out.println("\nHave a nice day! Please comeback again");
+                    System.out.println("\nHave a nice day! Please come back again");
                     System.exit(1);
                 }
                 else if(option == 5) {
