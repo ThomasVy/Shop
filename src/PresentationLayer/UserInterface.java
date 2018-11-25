@@ -1,11 +1,14 @@
 package PresentationLayer;
 
 import DomainLayer.Observer;
-import DomainLayer.Page;
 
 public interface UserInterface extends Observer{
-    public Page showHomePage();
-    public Page showLoginPage();
-    public Page showSubmitDocumentPage();
-    public Page showPromotionListPage();
+
+    public void startingPage();
+    public void showUnregisteredHomePage();
+    public void showRegisteredHomePage();
+    public void showOperatorHomePage();
+    public void showLoginPage();
+    public void showSubmitDocumentPage();
+    public void showPromotionListPage();
 }

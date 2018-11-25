@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import SharedElements.*;
 
 public class CompanyDatabaseHelper implements DatabaseHelper {
-    @Override
-    public void insert(Object object) {
-    }
 	private ArrayList<User> CompanyDatabase = new ArrayList<User>();
 	
 	public CompanyDatabaseHelper() {

@@ -19,14 +19,14 @@ public class CoverPanel extends JPanel {
         art.draw(g);
     }
 
-    public static void main(String[] args) {
-        CoverPanel panel = new CoverPanel();
-        JFrame frame = new JFrame("Learning ExAB.Decorator Pattern");
-        frame.getContentPane().add(panel);
-        frame.setSize(520,720);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
+//    public static void main(String[] args) {
+//        CoverPanel panel = new CoverPanel();
+//        JFrame frame = new JFrame("Learning ExAB.Decorator Pattern");
+//        frame.getContentPane().add(panel);
+//        frame.setSize(520,720);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setLocationRelativeTo(null);
+//        frame.setVisible(true);
+//    }
 
 }

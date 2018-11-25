@@ -1,5 +1,5 @@
 package DomainLayer;
 
 public interface Observer {
-    Page showDocumentListPage();
+    void showDocumentListPage();
 }

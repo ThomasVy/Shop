@@ -3,9 +3,9 @@ package DomainLayer;
 import java.util.ArrayList;
 
 import SharedElements.Document;
-import SharedElements.RegisterBuyer;
+import SharedElements.RegisteredBuyer;
 
 public class PromotionList {
     private ArrayList<Document> listOfPromotions;
-    private ArrayList<RegisterBuyer> listOfSubscribers;
+    private ArrayList<RegisteredBuyer> listOfSubscribers;
 }
