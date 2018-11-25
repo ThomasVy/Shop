@@ -5,7 +5,6 @@ import PresentationLayer.*;
 import SharedElements.*;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class OnlineSystem {
@@ -28,7 +27,6 @@ public class OnlineSystem {
     private ArrayList<StaffMember> staff;
 
     private OnlineSystem() {
-
     }
 
     public void startup(CommandLineUI ui) {
@@ -143,6 +141,22 @@ public class OnlineSystem {
             } catch (InputMismatchException ex) {
                 System.out.println("Must be an integer value!");
                 reader.nextLine();
+        while (true) {
+            int option = reader.nextInt();
+            reader.nextLine();
+            if (option == 1) {
+            	do {
+            		user = login();
+            	}while(user == null);
+                ui.showRegisteredHomePage(user.username);
+                break;
+            } else if (option == 2) {
+//                username = "unregistered";
+                userType = 3;
+                ui.showUnregisteredHomePage();
+                break;
+            } else {
+                System.out.println("\nYour entry was not an option try again!");
             }
         }
     }
@@ -178,7 +192,6 @@ public class OnlineSystem {
     }
 
     public User login() {
-        reader.nextLine();
         System.out.println("Please type in your username");
         String username = reader.nextLine();
         System.out.println("Please type in your password");
