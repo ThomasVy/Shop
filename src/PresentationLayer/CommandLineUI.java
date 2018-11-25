@@ -139,17 +139,57 @@ public class CommandLineUI implements UserInterface {
 
     @Override
     public void showSubmitDocumentPage() {
+        System.out.println("Document submission selected");
+    }
 
+    @Override
+    public void showRemoveDocumentPage() {
+        System.out.println("Document removal selected");
+    }
+
+    @Override
+    public void showUpdateDocumentPage() {
+        System.out.println("Document update selected");
     }
 
     @Override
     public void showPromotionListPage() {
+        System.out.println("Here is the list of all the promotions!");
+    }
+
+    @Override
+    public void showBookSearchPage() {
+        System.out.println("Search the name of the book you're looking for!");
 
     }
 
     @Override
-    public void showDocumentListPage() {
+    public void showOrderPlacementPage() {
+        System.out.println("Confirm the order you'd like to place");
+    }
 
+    @Override
+    public void showMakePaymentPage() {
+        System.out.println("Confirm the payment you'd like to make");
+
+    }
+
+    @Override
+    public void showRegistrationPage() {
+        System.out.println("Thanks for choosing to register" +
+                            "please enter your username"
+        );
+
+    }
+
+    @Override
+    public void showUnsubscribePage() {
+        System.out.println("Please confirm you'd wish to unsubscribe");
+    }
+
+    @Override
+    public void showDocumentListPage() {
+        System.out.println("Here is the list of all the document's!");
     }
 
 }

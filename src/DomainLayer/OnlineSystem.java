@@ -72,7 +72,6 @@ public class OnlineSystem {
                 if (option == 1) {
                     reader.nextLine();
                     user = login();
-                    System.out.println("Welcome " + user.name + "!");
                     Class userCheck = user.getClass();
                     if (userCheck.getSimpleName().compareToIgnoreCase("RegisteredBuyer") == 0) {
                         ui.showRegisteredHomePage(user.name);
@@ -109,14 +108,23 @@ public class OnlineSystem {
         int option;
         while(true)
             try {
-                ui.showUnregisteredMenu();
+                ui.showOperatorMenu();
                 option = reader.nextInt();
-                if (option == 5) {
-                    System.out.println("Have a nice day! Please comeback again");
-                    System.exit(1);
+                if(option == 1) {
+                    ui.showSubmitDocumentPage();
+                }
+                else if (option == 2) {
+                    ui.showRemoveDocumentPage();
+                }
+                else if (option == 3) {
+                    ui.showUpdateDocumentPage();
+                }
+                else if (option == 4) {
+                    ui.demoCoverArt();
                 }
                 else if (option == 5) {
-                    ui.demoCoverArt();
+                    System.out.println("Have a nice day! Please comeback again");
+                    System.exit(1);
                 }
                 else {
                     System.out.println("Your entry was not an option try again!");
@@ -135,8 +143,19 @@ public class OnlineSystem {
             try {
                 ui.showUnregisteredMenu();
                 option = reader.nextInt();
-
-                if(option == 5){
+                if(option == 1) {
+                    ui.showBookSearchPage();
+                }
+                else if (option == 2) {
+                    ui.showOrderPlacementPage();
+                }
+                else if (option == 3) {
+                    ui.showMakePaymentPage();
+                }
+                else if (option == 4) {
+                    ui.showRegistrationPage();
+                }
+                else if(option == 5){
                     ui.demoCoverArt();
                 }
                 else if(option == 6){
@@ -157,12 +176,31 @@ public class OnlineSystem {
             try {
                 ui.showRegisteredMenu();
                 option = reader.nextInt();
-                if (option == 7) {
+                if (option == 1) {
+                    ui.showBookSearchPage();
+                }
+                else if (option == 2) {
+                    ui.showOrderPlacementPage();
+                }
+                else if (option == 3) {
+                    ui.showMakePaymentPage();
+                }
+
+                else if (option == 4) {
+                    ui.showPromotionListPage();
+                }
+
+                else if (option == 5) {
+                    ui.showUnsubscribePage();
+                }
+                else if (option == 6) {
+                    ui.demoCoverArt();
+                }
+                else if (option == 7) {
                     System.out.println("\nHave a nice day! Please comeback again");
                     System.exit(1);
-                } else if (option == 6) {
-                    ui.demoCoverArt();
-                } else {
+                }
+                else {
                     System.out.println("Your entry was not an option try again!");
                 }
             } catch (InputMismatchException ex) {

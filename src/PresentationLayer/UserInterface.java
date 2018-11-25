@@ -10,5 +10,12 @@ public interface UserInterface extends Observer{
     public void showOperatorHomePage();
     public void showLoginPage();
     public void showSubmitDocumentPage();
+    public void showRemoveDocumentPage();
+    public void showUpdateDocumentPage();
     public void showPromotionListPage();
+    public void showBookSearchPage();
+    public void showOrderPlacementPage();
+    public void showMakePaymentPage();
+    public void showRegistrationPage();
+    public void showUnsubscribePage();
 }
