@@ -71,14 +71,16 @@ public class OnlineSystem {
 
                 if (option == 1) {
                     reader.nextLine();
-                    user = login();
+                    do {
+                    	user = login();
+                    }while(user == null);
                     Class userCheck = user.getClass();
                     if (userCheck.getSimpleName().compareToIgnoreCase("RegisteredBuyer") == 0) {
                         ui.showRegisteredHomePage(user.name);
                         promptRegisteredBuyerForMenuInput();
                     }
                     else if (userCheck.getSimpleName().compareToIgnoreCase("Operator") == 0) {
-                        ui.showOperatorHomePage();
+                        ui.showOperatorHomePage(user.name);
                         promptOperatorForMenuInput();
 
                     }

@@ -75,8 +75,8 @@ public class CommandLineUI implements UserInterface {
     }
 
     @Override
-    public void showOperatorHomePage() {
-
+    public void showOperatorHomePage(String username) {
+    	this.username = username;
         System.out.println(
                 "\nWelcome " + username + " to BIG BOOK ENERGY.inc!"
         );
