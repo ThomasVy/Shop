@@ -47,12 +47,17 @@ public class CommandLineUI implements UserInterface {
                                 "\n3. Make a payment" +
                                 "\n4. Register" +
                                 "\n5. Demo cover art" +
-                                "\n6. Exit"
+                                "\n6. Exit" +
+                                "\n7. Testing Upload"
                 );
                 option = reader.nextInt();
                 if(option == 6) {
                     System.out.println("\nHave a nice day! Please comeback again");
                     System.exit(0);
+                }
+                else if(option == 7)
+                {
+                	OnlineSystem.getInstance().
                 }
                 else if(option == 5) {
                     demoCoverArt();
