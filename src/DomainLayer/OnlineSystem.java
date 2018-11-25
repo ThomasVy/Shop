@@ -5,6 +5,7 @@ import PresentationLayer.*;
 import SharedElements.*;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class OnlineSystem {
@@ -69,16 +70,17 @@ public class OnlineSystem {
                 int option = reader.nextInt();
 
                 if (option == 1) {
+                    reader.nextLine();
                     user = login();
-                    System.out.println("Welcome " + user.name + "!");
                     Class userCheck = user.getClass();
                     if (userCheck.getSimpleName().compareToIgnoreCase("RegisteredBuyer") == 0) {
-                        ui.showRegisteredHomePage();
+                        ui.showRegisteredHomePage(user.name);
                         promptRegisteredBuyerForMenuInput();
                     }
                     else if (userCheck.getSimpleName().compareToIgnoreCase("Operator") == 0) {
                         ui.showOperatorHomePage();
                         promptOperatorForMenuInput();
+
                     }
                     else{
                         System.out.println("ERROR:" +
@@ -102,14 +104,58 @@ public class OnlineSystem {
         }
     }
 
+    private void promptOperatorForMenuInput() {
+        int option;
+        while(true)
+            try {
+                ui.showOperatorMenu();
+                option = reader.nextInt();
+                if(option == 1) {
+                    ui.showSubmitDocumentPage();
+                }
+                else if (option == 2) {
+                    ui.showRemoveDocumentPage();
+                }
+                else if (option == 3) {
+                    ui.showUpdateDocumentPage();
+                }
+                else if (option == 4) {
+                    ui.demoCoverArt();
+                }
+                else if (option == 5) {
+                    System.out.println("Have a nice day! Please comeback again");
+                    System.exit(1);
+                }
+                else {
+                    System.out.println("Your entry was not an option try again!");
+                }
+            }
+            catch (InputMismatchException ex) {
+                System.out.println("Must be an integer value!");
+                reader.nextLine();
+            }
+
+    }
+
     public void promptUnregisteredUserForMenuInput() {
         int option;
         while(true)
             try {
                 ui.showUnregisteredMenu();
                 option = reader.nextInt();
-
-                if(option == 5){
+                if(option == 1) {
+                    ui.showBookSearchPage();
+                }
+                else if (option == 2) {
+                    ui.showOrderPlacementPage();
+                }
+                else if (option == 3) {
+                    ui.showMakePaymentPage();
+                }
+                else if (option == 4) {
+                    ui.showRegistrationPage();
+                }
+                else if(option == 5){
                     ui.demoCoverArt();
                 }
                 else if(option == 6){
@@ -130,59 +176,40 @@ public class OnlineSystem {
             try {
                 ui.showRegisteredMenu();
                 option = reader.nextInt();
-                if (option == 7) {
+                if (option == 1) {
+                    ui.showBookSearchPage();
+                }
+                else if (option == 2) {
+                    ui.showOrderPlacementPage();
+                }
+                else if (option == 3) {
+                    ui.showMakePaymentPage();
+                }
+
+                else if (option == 4) {
+                    ui.showPromotionListPage();
+                }
+
+                else if (option == 5) {
+                    ui.showUnsubscribePage();
+                }
+                else if (option == 6) {
+                    ui.demoCoverArt();
+                }
+                else if (option == 7) {
                     System.out.println("\nHave a nice day! Please comeback again");
                     System.exit(1);
-                } else if (option == 6) {
-                    ui.demoCoverArt();
-                } else {
+                }
+                else {
                     System.out.println("Your entry was not an option try again!");
                 }
             } catch (InputMismatchException ex) {
                 System.out.println("Must be an integer value!");
                 reader.nextLine();
-        while (true) {
-            int option = reader.nextInt();
-            reader.nextLine();
-            if (option == 1) {
-            	do {
-            		user = login();
-            	}while(user == null);
-                ui.showRegisteredHomePage(user.username);
-                break;
-            } else if (option == 2) {
-//                username = "unregistered";
-                userType = 3;
-                ui.showUnregisteredHomePage();
-                break;
-            } else {
-                System.out.println("\nYour entry was not an option try again!");
             }
         }
     }
 
-    public void promptOperatorForMenuInput() {
-        int option;
-        while(true)
-            try {
-                ui.showUnregisteredMenu();
-                option = reader.nextInt();
-                if (option == 5) {
-                    System.out.println("Have a nice day! Please comeback again");
-                    System.exit(1);
-                }
-                else if (option == 5) {
-                    ui.demoCoverArt();
-                }
-                else {
-                    System.out.println("Your entry was not an option try again!");
-                }
-            }
-            catch (InputMismatchException ex) {
-                System.out.println("Must be an integer value!");
-                reader.nextLine();
-            }
-    }
 
     public static OnlineSystem getInstance() {
         if (instance == null) {
