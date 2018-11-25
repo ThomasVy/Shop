@@ -107,29 +107,20 @@ public class CommandLineUI implements UserInterface {
                 "\nWelcome " + username + " to BIG BOOK ENERGY.inc!"
         );
 
-        int option;
-        while (true) {
-            System.out.println(
-                    "\nPlease select from the following options!" +
-                            "\n1. Add a document" +
-                            "\n2. Remove a document" +
-                            "\n3. Update document" +
-                            "\n4. Demo cover art" +
-                            "\n5. Exit"
-            );
-            option = reader.nextInt();
-            if (option == 5) {
-                System.out.println("Have a nice day! Please comeback again");
-                System.exit(1);
-            }
-            else if (option == 5) {
-                demoCoverArt();
-            }
-            else {
-                System.out.println("Your entry was not an option try again!");
-            }
-        }
     }
+
+
+    public void showOperatorMenu(){
+        System.out.println(
+                "\nPlease select from the following options!" +
+                        "\n1. Add a document" +
+                        "\n2. Remove a document" +
+                        "\n3. Update document" +
+                        "\n4. Demo cover art" +
+                        "\n5. Exit"
+        );
+    }
+
 
     public void demoCoverArt() {
             CoverPanel panel = new CoverPanel();
@@ -144,31 +135,32 @@ public class CommandLineUI implements UserInterface {
 
     @Override
     public void showLoginPage() {
-        // Logging in should query database, just a simplification to get UI running nicely
-        reader.nextLine();
-        System.out.println("Please type in your username");
-        username = reader.nextLine();
-        System.out.println("Please type in your password");
-        String password = reader.nextLine();
-
-
-
-        // just here to test what user we want! can be removed after implementation of proper login
-        while(true) {
-            System.out.println("Please type in 1 for Operator, and 2 for Registered Buyer");
-            userType = reader.nextInt();
-            if(userType == 1) {
-                showOperatorHomePage();
-                break;
-            }
-            else if(userType == 2) {
-                showRegisteredHomePage(username);
-                break;
-            }
-            else {
-                System.out.println("Your entry was not an option try again!");
-            }
-        }
+        // legacy code
+//        // Logging in should query database, just a simplification to get UI running nicely
+//        reader.nextLine();
+//        System.out.println("Please type in your username");
+//        username = reader.nextLine();
+//        System.out.println("Please type in your password");
+//        String password = reader.nextLine();
+//
+//
+//
+//        // just here to test what user we want! can be removed after implementation of proper login
+//        while(true) {
+//            System.out.println("Please type in 1 for Operator, and 2 for Registered Buyer");
+//            userType = reader.nextInt();
+//            if(userType == 1) {
+//                showOperatorHomePage();
+//                break;
+//            }
+//            else if(userType == 2) {
+//                showRegisteredHomePage();
+//                break;
+//            }
+//            else {
+//                System.out.println("Your entry was not an option try again!");
+//            }
+//        }
     }
 
     @Override
