@@ -1,8 +1,8 @@
 package SharedElements;
 
 public abstract class User {
-	String username;
-	String password;
-	String name;
-	String email;
+	public String username;
+	public String password;
+	public String name;
+	public String email;
 }
