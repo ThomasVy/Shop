@@ -1,6 +1,6 @@
 package PresentationLayer;
 
-import DomainLayer.CoverPanel;
+import DomainLayer.*;
 
 import javax.swing.*;
 import java.util.Scanner;
@@ -18,39 +18,20 @@ public class CommandLineUI implements UserInterface {
 
     static String username;
 
-    public CommandLineUI()
-    {
+    public CommandLineUI() {
+
     }
 
     @Override
-    public void startingPage() {
-        //Displaying some dialogue for easy user interaction
+    public void showStartingPage() {
+        // Displaying some dialogue for easy user interaction
         System.out.println(
-
                 "\nWelcome to BIG BOOK ENERGY.inc" +
                 "\nWould you like to enter as a registered user or operator, or enter to just shop?" +
                 "\nJust so you know registered users get access to exclusive deals!" +
                 "\n1. I'd like to login" +
                 "\n2. Continue as unregistered"
-
         );
-
-        //the below could be added to controller classes, as it probably shouldn't be done by GUI but idk
-        // check the user input, if they don't put a good input prompt again
-        while(true) {
-            int option = reader.nextInt();
-            if (option == 1) {
-                showLoginPage();
-                break;
-            } else if (option == 2) {
-                username = "unregistered";
-                userType = 3;
-                showUnregisteredHomePage();
-                break;
-            } else {
-                System.out.println("\nYour entry was not an option try again!");
-            }
-        }
     }
 
     @Override
@@ -159,12 +140,14 @@ public class CommandLineUI implements UserInterface {
 
     @Override
     public void showLoginPage() {
-        // logging in should query database, just a simplification to get UI running nicely
+        // Logging in should query database, just a simplification to get UI running nicely
         reader.nextLine();
         System.out.println("Please type in your username");
         username = reader.nextLine();
         System.out.println("Please type in your password");
         String password = reader.nextLine();
+
+
 
         // just here to test what user we want! can be removed after implementation of proper login
         while(true) {
@@ -199,9 +182,4 @@ public class CommandLineUI implements UserInterface {
 
     }
 
-    public static void main(String[] args) {
-        CommandLineUI UI = new CommandLineUI();
-        reader = new Scanner(System.in);
-        UI.startingPage();
-    }
 }

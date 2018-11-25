@@ -10,6 +10,10 @@ public class CompanyDatabaseHelper implements DatabaseHelper {
 
 	}
 
+	public ArrayList<User> getCompanyDatabase() {
+		return CompanyDatabase;
+	}
+
 	@Override
 	public void insert(Object object) {
 		CompanyDatabase.add((User) object);

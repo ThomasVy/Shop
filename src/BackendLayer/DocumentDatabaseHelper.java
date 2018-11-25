@@ -9,6 +9,10 @@ public class DocumentDatabaseHelper implements DatabaseHelper {
 	public DocumentDatabaseHelper() {
 		
 	}
+
+	public ArrayList<Document> getDocumentDatabase() {
+		return DocumentDatabase;
+	}
 	
 	@Override
 	public void insert(Object object) {
