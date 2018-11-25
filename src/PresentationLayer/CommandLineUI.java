@@ -1,5 +1,8 @@
 package PresentationLayer;
 
+import DomainLayer.CoverPanel;
+
+import javax.swing.*;
 import java.util.Scanner;
 
 public class CommandLineUI implements UserInterface {
@@ -53,20 +56,26 @@ public class CommandLineUI implements UserInterface {
     @Override
     public void showUnregisteredHomePage() {
             System.out.println(
-                    "\nWelcome to BIG BOOK ENERGY.inc!" +
-                    "\nPlease select from the following options!" +
-                    "\n1. Search for a book" +
-                    "\n2. Place an order" +
-                    "\n3. Make a payment" +
-                    "\n4. Register" +
-                    "\n5. Exit"
+                    "\nWelcome to BIG BOOK ENERGY.inc!"
             );
             int option;
             while(true){
+                System.out.println(
+                        "\nPlease select from the following options!" +
+                                "\n1. Search for a book" +
+                                "\n2. Place an order" +
+                                "\n3. Make a payment" +
+                                "\n4. Register" +
+                                "\n5. Demo cover art" +
+                                "\n6. Exit"
+                );
                 option = reader.nextInt();
-                if(option == 5) {
+                if(option == 6) {
                     System.out.println("\nHave a nice day! Please comeback again");
                     System.exit(1);
+                }
+                else if(option == 5) {
+                    demoCoverArt();
                 }
                 else {
                     System.out.println("Your entry was not an option try again!");
@@ -78,23 +87,29 @@ public class CommandLineUI implements UserInterface {
     public void showRegisteredHomePage() {
 
         System.out.println(
-                        "\nWelcome " + username + " to BIG BOOK ENERGY.inc!" +
-                        "\nPlease select from the following options!" +
-                        "\n1. Search for a book" +
-                        "\n2. Place an order" +
-                        "\n3. Make a payment" +
-                        "\n4. See promotions List" +
-                        "\n5. Unsubscribe from promotions list" +
-                        "\n6. Exit"
+                        "\nWelcome " + username + " to BIG BOOK ENERGY.inc!"
         );
 
         int option;
         while (true) {
+            System.out.println(
+                    "\nPlease select from the following options!" +
+                            "\n1. Search for a book" +
+                            "\n2. Place an order" +
+                            "\n3. Make a payment" +
+                            "\n4. See promotions List" +
+                            "\n5. Unsubscribe from promotions list" +
+                            "\n6. Demo cover art" +
+                            "\n7. Exit"
+            );
             option = reader.nextInt();
-            if (option == 6) {
+            if (option == 7) {
                 System.out.println("\nHave a nice day! Please comeback again");
                 System.exit(1);
-            } else {
+            }
+            else if(option == 6) {
+                demoCoverArt();
+            }else {
                 System.out.println("Your entry was not an option try again!");
             }
         }
@@ -104,24 +119,42 @@ public class CommandLineUI implements UserInterface {
     public void showOperatorHomePage() {
 
         System.out.println(
-                "\nWelcome " + username + " to BIG BOOK ENERGY.inc!" +
-                        "\nPlease select from the following options!" +
-                        "\n1. Add a document" +
-                        "\n2. Remove a document" +
-                        "\n3. Update document" +
-                        "\n4. Exit"
+                "\nWelcome " + username + " to BIG BOOK ENERGY.inc!"
         );
 
         int option;
         while (true) {
+            System.out.println(
+                    "\nPlease select from the following options!" +
+                            "\n1. Add a document" +
+                            "\n2. Remove a document" +
+                            "\n3. Update document" +
+                            "\n4. Demo cover art" +
+                            "\n5. Exit"
+            );
             option = reader.nextInt();
-            if (option == 4) {
+            if (option == 5) {
                 System.out.println("Have a nice day! Please comeback again");
                 System.exit(1);
-            } else {
+            }
+            else if (option == 5) {
+                demoCoverArt();
+            }
+            else {
                 System.out.println("Your entry was not an option try again!");
             }
         }
+    }
+
+    public void demoCoverArt() {
+            CoverPanel panel = new CoverPanel();
+            JFrame frame = new JFrame("Cover Art");
+            frame.getContentPane().add(panel);
+            frame.setSize(520,720);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+
     }
 
     @Override
