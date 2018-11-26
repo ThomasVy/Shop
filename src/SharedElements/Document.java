@@ -17,7 +17,7 @@ public class Document {
     private int availableAmount;
     private String location;
     
-    public Document(int id, String name, ArrayList<Author> authors, String date, String type, int availableAmount)
+    public Document(int id, String name, ArrayList<Author> authors, String date, String type, int availableAmount, double price)
     {
     	documentId = id;
     	this.name = name;
@@ -25,6 +25,7 @@ public class Document {
     	dateCreated = date;
     	this.type = type;
     	this.availableAmount = availableAmount;
+    	this.price = price;
     	location = null;
     }
     public boolean performUpload(){
@@ -74,6 +75,7 @@ public class Document {
     	string.deleteCharAt(string.length()-1);
     	return string.toString();
     }
+
     public String getName() { return name; }
 
     public double getPrice() { return price; }

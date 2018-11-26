@@ -5,4 +5,6 @@ public abstract class User {
 	public String password;
 	public String name;
 	public String email;
+
+	public String getUsername() {return username;}
 }

@@ -108,7 +108,7 @@ public class OnlineSystem {
                     }
                     break;
                 } else if (option == 2) {
-                    userType = 3;
+                    user = new OrdinaryBuyer();
                     ui.showUnregisteredHomePage();
                     promptUnregisteredUserForMenuInput();
                     break;
@@ -193,13 +193,20 @@ public class OnlineSystem {
                 ui.showUnregisteredMenu();
                 option = reader.nextInt();
                 if(option == 1) {
+                    reader.nextLine();
                     ui.showBookSearchPage();
+                    String document = reader.nextLine();
+                    ui.showBookFound(searchForDocument(document));
                 }
                 else if (option == 2) {
+                    reader.nextLine();
                     ui.showOrderPlacementPage();
+                    composeOrder();
                 }
                 else if (option == 3) {
                     ui.showMakePaymentPage();
+                    makePayment();
+
                 }
                 else if (option == 4) {
                     ui.showRegistrationPage();
@@ -238,6 +245,7 @@ public class OnlineSystem {
                 }
                 else if (option == 3) {
                     ui.showMakePaymentPage();
+                    makePayment();
                 }
 
                 else if (option == 4) {
@@ -285,36 +293,49 @@ public class OnlineSystem {
     }
 
     public void composeOrder() {
-        Order theOrder = new Order(user);
+        System.out.println("Please enter your address");
+        String address = reader.nextLine();
+        Order theOrder = new Order(user, address);
         boolean orderComplete = false;
         while(!orderComplete) {
+            System.out.println("Enter the book you'd like to order");
             String query = reader.nextLine();
             int option;
             Document document = searchForDocument(query);
+            // if document doesn't exist print an error
             if(document == null)
             {
                 System.out.println("No book with that name found! SORRY!");
             }
+            // if document exists continue
             else {
+                // if document is out of stock print an error
                 if (document.getAvailableAmount() == 0) {
                     System.out.println("Sorry we are out of stock!");
-                } else {
+                }
+                // else if document is in stock show it and add it to the order
+                else {
                     ui.showBookFound(document);
                     theOrder.setAmount(theOrder.getAmount() + document.getPrice());
                     document.setAvailableAmount(document.getAvailableAmount() - 1);
+                    theOrder.getItems().add(document);
                     while (true) {
                         try {
+                            // prompt the user if they'd like to add more to the order
                             System.out.println("Would you like to add to your order?" +
                                     "\n1. Yes add more books" +
                                     "\n2. No that is all!");
                             option = reader.nextInt();
+                            // if yes then prompt break loop and clear scanner
                             if (option == 1) {
-                                System.out.println("Enter the next book you'd like to search");
                                 reader.nextLine();
                                 break;
-                            } else if (option == 2) {
+                            }
+                            // if not then set order as complete place it and show the receipt
+                            else if (option == 2) {
                                 orderComplete = true;
                                 placeOrder(theOrder);
+                                ui.showFinalOrder(theOrder);
                                 reader.nextLine();
                                 break;
                             } else {
@@ -352,7 +373,23 @@ public class OnlineSystem {
             return null;
     }
 
-
+    public void makePayment() {
+        double amountOwed = 0;
+        for(Order order: orders) {
+            // just here when we implement multi users using at same time
+            if(order.getBuyer().getUsername().compareTo(user.getUsername()) == 0);
+            {
+                for(Document docs: order.getItems()) {
+                    amountOwed += docs.getPrice();
+                }
+            }
+        }
+        System.out.println("You owe $" + amountOwed +
+                "\nPlease type in your credit card number: ");
+        String cardNumber = reader.nextLine();
+        reader.nextLine();
+        System.out.println("Thank you for your payment have a nice day!");
+    }
 
     public void registerOrdinaryBuyer(OrdinaryBuyer ordinaryBuyer) {
 
