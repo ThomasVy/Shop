@@ -6,6 +6,7 @@ import DomainLayer.Author;
 import DomainLayer.Cover;
 
 public class Document {
+
     private int documentId;
     private String name;
     private ArrayList<Author> authors;
@@ -16,6 +17,7 @@ public class Document {
     private double price;
     private int availableAmount;
     private String location;
+    private int quantitySetAside;
     
     public Document(int id, String name, ArrayList<Author> authors, String date, String type, int availableAmount, double price)
     {
@@ -27,7 +29,9 @@ public class Document {
     	this.availableAmount = availableAmount;
     	this.price = price;
     	location = null;
+    	quantitySetAside = 0;
     }
+
     public boolean performUpload(){
     	Upload upload = null;
     	if(type.equalsIgnoreCase("PDF"))
@@ -79,6 +83,15 @@ public class Document {
     public String getName() { return name; }
 
     public double getPrice() { return price; }
+
+    public void takeAwayQuantity() {
+    	availableAmount --;
+    	quantitySetAside ++;
+	}
+
+	public int getQuantitySetAside () { return quantitySetAside; }
+
+	public void setQuantitySetAside(int quantitySetAside) { this.quantitySetAside = quantitySetAside; }
 
     public int getAvailableAmount() { return availableAmount; }
 

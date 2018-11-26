@@ -43,17 +43,34 @@ public class CommandLineUI implements Observer {
         System.out.println("\nWelcome " + username + " to BIG BOOK ENERGY, Inc!");
     }
 
-    public void showRegisteredMenu() {
-        System.out.println("\nPlease select from the following options!" +
-                "\n1. Search for a book" +
-                "\n2. Place an order" +
-                "\n3. Make a payment" +
-                "\n4. See promotions list" +
-                "\n5. Unsubscribe from promotions list" +
-                "\n6. Simulate promotions list notification" +
-                "\n7. Simulate cover art" +
-                "\n8. Exit"
-        );
+
+    public void showRegisteredMenu(boolean status) {
+        if(status) {
+            System.out.println(
+                    "\nPlease select from the following options!" +
+                            "\n1. Search for a book" +
+                            "\n2. Place an order" +
+                            "\n3. Make a payment" +
+                            "\n4. See promotions list" +
+                            "\n5. Unsubscribe from promotions list" +
+                            "\n6. Demo cover art" +
+                            "\n7. Simulate promotions list notification" +
+                            "\n8. Exit"
+            );
+        }
+        else {
+            System.out.println(
+                    "\nPlease select from the following options!" +
+                            "\n1. Search for a book" +
+                            "\n2. Place an order" +
+                            "\n3. Make a payment" +
+                            "\n4. See promotions list" +
+                            "\n5. Resubscribe to promotions list" +
+                            "\n6. Demo cover art" +
+                            "\n7. Simulate promotions list notification" +
+                            "\n8. Exit"
+            );
+        }
     }
 
     public void showOperatorHomePage(String username) {
@@ -118,13 +135,14 @@ public class CommandLineUI implements Observer {
         );
     }
 
-
-    private void displayAllDocuments(ArrayList<Document> documents) {
-        System.out.println("\nFormat(INDEX: ID: NAME: DATE: PRICE: QUANTITY: AUTHORS)");
-        for (int i = 0; i < documents.size(); i++) {
-            System.out.println(i + "    " + documents.get(i).toString());
-            System.out.flush();
-        }
+    public void displayAllDocuments(ArrayList<Document> documents)
+    {
+       System.out.println("Format(INDEX: ID: NAME: DATE: PRICE: QUANTITY: AUTHORS)");
+	   for(int i = 0; i<documents.size();i++)
+       {
+       	System.out.println(i + "    " + documents.get(i).toString());
+       	System.out.flush();
+       }
     }
 
     public void showPromotionsListPage(ArrayList<Document> promotionList) {
@@ -182,6 +200,9 @@ public class CommandLineUI implements Observer {
         System.out.println("\nPlease confirm you'd wish to unsubscribe.");
     }
 
+    public void showResubscribePage() { System.out.println("Please confirm you'd wish to subscribe"); }
+
+    @Override
     public void showNotification() {
         System.out.println("\nThe promotions list has been updated!");
     }

@@ -14,4 +14,7 @@ public class RegisteredBuyer extends User {
 		this.email = email;
 		this.subscription = true;
 	}
+
+	public void setSubscription(boolean status) { this.subscription = status; }
+	public boolean getSubscription() { return this.subscription; }
 }
