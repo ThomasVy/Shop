@@ -15,8 +15,8 @@ public interface UserInterface extends Observer{
     
     public void showLoginPage();
     public Document showSubmitDocumentPage();
-    public void showRemoveDocumentPage();
-    public void showUpdateDocumentPage();
+    public void showRemoveDocumentPage(ArrayList<Document> documents);
+    public void showUpdateDocumentPage(ArrayList<Document> documents);
     public void showPromotionListPage(ArrayList<Document> promotionList);
     public void showBookSearchPage();
     public void showOrderPlacementPage();

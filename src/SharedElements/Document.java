@@ -61,7 +61,19 @@ public class Document {
         this.price = price;
         this.availableAmount = availableAmount;
     }
-
+    
+    @Override
+    public String toString()
+    {
+    	StringBuilder string = new StringBuilder();
+    	string.append(documentId).append("\t"+name).append("\t"+dateCreated).append("\t" +price).append("\t" + availableAmount + "\t\t");
+    	for(Author author: authors)
+    	{
+    		string.append(author.getName() + ",");
+    	}
+    	string.deleteCharAt(string.length()-1);
+    	return string.toString();
+    }
     public String getName() { return name; }
 
     public double getPrice() { return price; }
@@ -71,5 +83,19 @@ public class Document {
     public void setAvailableAmount(int availableAmount) { this.availableAmount = availableAmount; }
 
     public ArrayList<Author> getAuthors(){ return authors; }
+    
+    public void setId(int id) {this.documentId = id;}
+    
+    public void setName(String name) {this.name = name;}
+    
+    public void setAuthors(ArrayList<Author> authors) { this.authors = authors;}
+    
+    public void setDate(String date) {this.dateCreated = date;}
+    
+    public void setPrice(int price) {this.price = price;}
+    
+    public void setQuantity(int quantity) {this.availableAmount = quantity;}
+    
+    public void setCover(Cover cover) { this.cover = cover;}
 
 }

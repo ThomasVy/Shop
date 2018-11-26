@@ -26,11 +26,15 @@ public class OnlineSystem {
     private PromotionList promotionList;
     private ArrayList<RegisteredBuyer> registeredBuyers;
     private ArrayList<StaffMember> staff;
-    private ArrayList<Document> documents;
 
     private OnlineSystem() {
         promotionList = new PromotionList();
         orders = new ArrayList<Order>();
+        admins = new ArrayList<SystemAdmin>();
+        managers = new ArrayList<Manager>();
+        orders = new ArrayList<Order>();
+        registeredBuyers = new ArrayList<RegisteredBuyer>();
+        staff = new ArrayList<StaffMember>();
     }
 
     public void startup(CommandLineUI ui) {
@@ -128,10 +132,41 @@ public class OnlineSystem {
                     addDocument(ui.showSubmitDocumentPage());
                 }
                 else if (option == 2) {
-                    ui.showRemoveDocumentPage();
+                	ui.showRemoveDocumentPage(ddh.getDocumentDatabase());
+                	if(ddh.getDocumentDatabase().size() == 0)
+                	{
+                		System.out.println("Sorry! There are no documents avaliable.");
+                		continue;
+                	}
+                	int removalIndex;
+                	while(true) {
+	                	try {
+	                		removalIndex = reader.nextInt();
+	                		if(removalIndex>=0&&removalIndex<ddh.getDocumentDatabase().size())
+	                			break;
+	                	}catch(InputMismatchException e)
+	                	{
+	                		System.out.println("Must be an integer value");
+	                	}
+	                	System.out.println("Please try again");
+                	}
+                    removeDocument(removalIndex);
                 }
                 else if (option == 3) {
-                    ui.showUpdateDocumentPage();
+                    ui.showUpdateDocumentPage(ddh.getDocumentDatabase());
+                    int updateIndex;
+                    while(true) {
+	                	try {
+	                		updateIndex = reader.nextInt();
+	                		if(updateIndex>=0&&updateIndex<ddh.getDocumentDatabase().size())
+	                			break;
+	                	}catch(InputMismatchException e)
+	                	{
+	                		System.out.println("Must be an integer value");
+	                	}
+	                	System.out.println("Please try again");
+                	}
+                    ui.changeDocument(ddh.getDocumentDatabase().get(updateIndex));
                 }
                 else if (option == 4) {
                     ui.demoCoverArt();
@@ -363,11 +398,11 @@ public class OnlineSystem {
     }
 
     public void updateDocument(Document document) {
-
+  
     }
 
-    public void removeDocument(Document document) {
-
+    public void removeDocument(int index) {
+    	ddh.getDocumentDatabase().remove(index);
     }
 
     public ArrayList<Document> getDocumentList() {

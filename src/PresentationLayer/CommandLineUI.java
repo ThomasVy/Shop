@@ -6,6 +6,7 @@ import SharedElements.*;
 import javax.swing.*;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CommandLineUI implements UserInterface {
@@ -150,19 +151,105 @@ public class CommandLineUI implements UserInterface {
     		System.out.println("Please enter a valid type");
     		type = reader.nextLine();
     	}
-    	return new Document(1, "hello", new ArrayList<Author>(), "10", type , 65);
+    	return new Document(1, "hello", new ArrayList<Author>(), "November 25, 2018", type , 65);
     }
 
     @Override
-    public void showRemoveDocumentPage() {
-        System.out.println("Document removal selected");
+    public void showRemoveDocumentPage(ArrayList<Document> documents) {
+        System.out.println("Document removal selected.");
+        displayAllDocuments(documents);
+        System.out.println("Please the indicate the document you would like to remove with the corresponding index number");
     }
 
     @Override
-    public void showUpdateDocumentPage() {
+    public void showUpdateDocumentPage(ArrayList<Document> documents) {
         System.out.println("Document update selected");
+        displayAllDocuments(documents);
+        System.out.println("Please the indicate the document you would like to update with the corresponding index number");
     }
-
+    public void changeDocument(Document doc)
+    {
+    	   while(true) {
+    		   try {
+    			   System.out.println(
+    		                 "\nPlease select one of the attribute to change!" +
+    		                         "\n1. Document ID" +
+    		                         "\n2. Document Name" +
+    		                         "\n3. Date Created" +
+    		                         "\n4. Document Price" +
+    		                         "\n5. Quantity" +
+    		                         "\n6. Authors"  +
+    		                         "\n7. Exit"
+    		        );
+                   int option = reader.nextInt();
+                   reader.nextLine();
+                   if(option == 1) {
+                       System.out.println("What would you like the document ID be?");
+                       doc.setId(reader.nextInt());
+                   }
+                   else if (option == 2) {
+                	   System.out.println("What would you like the document name be?");
+                       doc.setName(reader.nextLine());
+                   }
+                   else if (option == 3) {
+                	   System.out.println("What would you like the document date created be?");
+                       doc.setDate(reader.nextLine());
+                   }
+                   else if (option == 4) {
+                	   System.out.println("What would you like the document price be?");
+                       doc.setPrice(reader.nextInt());
+                   }
+                   else if(option == 5){
+                	   System.out.println("What would you like the document quantity be?");
+                       doc.setQuantity(reader.nextInt());
+                   }
+                   else if(option == 6){
+                	   int option2;
+                	   do {
+                		   System.out.println(
+          		                 "\nPlease select one of the following!" +
+          		                         "\n1. Add Author" +
+          		                         "\n2. Remove Author" +
+          		                         "\n3. Quit Author Editor");
+                		   option2 = reader.nextInt();
+                		   reader.nextLine();
+                		   if(option2 == 1)
+                		   {
+                			   System.out.println("Tell me the Author's name to Add");
+                               doc.getAuthors().add(new Author(reader.nextLine()));
+                		   }
+                		   else if(option2 == 2)
+                		   {
+                			   System.out.println("Tell me the Author's name to Delete");
+                               for(int i =0 ; i<doc.getAuthors().size(); i++)
+                               {
+                            	   if(doc.getAuthors().get(i).getName().equalsIgnoreCase(reader.nextLine())) {
+                            		   doc.getAuthors().remove(i);
+                            		   break;
+                            	   }
+                               }
+                		   }
+                	   }while(option2!=3);
+                	   
+                   }
+                   else if(option == 7)
+                   {
+                	   break;
+                   }
+               }
+               catch (InputMismatchException ex) {
+                   System.out.println("Must be an integer value!\n Please Try Again!");
+               }
+    	   }
+    }
+    private void displayAllDocuments(ArrayList<Document> documents)
+    {
+       System.out.println("INDEX\tID\tNAME\tDATE\t\t\tPRICE\tQUANTITY\tAUTHORS");
+	   for(int i = 0; i<documents.size();i++)
+       {
+       	System.out.println(i + "\t" + documents.get(i).toString());
+       }
+    }
     @Override
     public void showPromotionListPage(ArrayList<Document> promotionList) {
         System.out.println("Here is the list of all the promotions!");
