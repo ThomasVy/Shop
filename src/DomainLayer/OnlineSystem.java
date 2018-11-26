@@ -139,13 +139,44 @@ public class OnlineSystem {
         while (true)
             try {
                 ui.showOperatorMenu();
-                option = reader.nextInt();
+                option = Integer.parseInt(reader.nextLine());
                 if (option == 1) {
-                    addDocument(ui.showSubmitDocumentPage());
+                	System.out.println("Please enter the document type:");
+                	String type = reader.nextLine();
+                	while(!type.equalsIgnoreCase("PDF")&&!type.equalsIgnoreCase("DOCX")&&!type.equalsIgnoreCase("PNG"))
+                	{
+                		System.out.println("Please enter a valid type");
+                		type = reader.nextLine();
+                	}
+                	int id = -1;
+                	while(id<0)
+                	{
+	                	System.out.println("Enter the document Id (must be greater than 0):");
+	                	id = Integer.parseInt(reader.nextLine());
+                	}
+                	System.out.println("Enter the book name:");
+                	String name = reader.nextLine();
+                    ArrayList<Author> authors = new ArrayList<Author>();
+            		authorOptions(authors);
+                	System.out.println("Enter the date the document was created:");
+                	String date =  reader.nextLine();
+                	System.out.println("Enter the price of the document:");
+                	double price =  Double.parseDouble(reader.nextLine());
+                	System.out.print("Enter the quantity of the document available");
+                	int quantity = Integer.parseInt(reader.nextLine());
+                	Document doc = new Document(id, name, authors, date, type , quantity, price);
+                	if(doc.performUpload())
+                	{
+	                	ddh.insert(doc);
+	                	System.out.println("Successful addition of document!");
+                	}
+                	else
+                		System.out.println("Failed to upload document!");
+                	
                 } else if (option == 2) {
                     ui.showRemoveDocumentPage(ddh.getDocumentDatabase());
                     if (ddh.getDocumentDatabase().size() == 0) {
-                        System.out.println("Sorry! There are no documents avaliable.");
+                        System.out.println("Sorry! There are no documents available.");
                         continue;
                     }
                     int removalIndex;
@@ -173,7 +204,8 @@ public class OnlineSystem {
                         }
                         System.out.println("Please try again");
                     }
-                    ui.showDocumentUpdateOptions(ddh.getDocumentDatabase().get(updateIndex));
+                   documentOptions(ddh.getDocumentDatabase().get(updateIndex));
+                    
                 } else if (option == 4) {
                     ui.demoCoverArt();
                 } else if (option == 5) {
@@ -188,7 +220,61 @@ public class OnlineSystem {
             }
 
     }
+    private void documentOptions(Document doc)
+    {
+    	while (true) {
+          try {
+        	  ui.showDocumentUpdateOptions(doc);
+              int option = reader.nextInt();
+              reader.nextLine();
+              if (option == 1) {
+                  System.out.println("What would you like the document ID be?");
+                  doc.setId(reader.nextInt());
+              } else if (option == 2) {
+                  System.out.println("What would you like the document name be?");
+                  doc.setName(reader.nextLine());
+              } else if (option == 3) {
+                  System.out.println("What would you like the document date created be?");
+                  doc.setDate(reader.nextLine());
+              } else if (option == 4) {
+                  System.out.println("What would you like the document price be?");
+                  doc.setPrice(reader.nextInt());
+              } else if (option == 5) {
+                  System.out.println("What would you like the document quantity be?");
+                  doc.setQuantity(reader.nextInt());
+              } else if (option == 6) {
+                  authorOptions(doc.getAuthors());
+              } else if (option == 7) {
+                  break;
+              }
+          } catch (InputMismatchException ex) {
+              System.out.println("Must be an integer value!\n Please Try Again!");
+          }
+      }
+    }
+    private void authorOptions(ArrayList<Author> authors)
+    {
+    	int option;
+        do {
+            ui.showAuthorOptions();
+            option = reader.nextInt();
+            reader.nextLine();
+            if (option == 1) {
+                System.out.println("Tell me the Author's name to Add");
+                authors.add(new Author(reader.nextLine()));
+            } else if (option == 2) {
+                System.out.println("Tell me the Author's name to Delete");
+                String input = reader.nextLine();
+                for (int i = 0; i < authors.size(); i++) {
+                    if (authors.get(i).getName().equalsIgnoreCase(input)) {
+                        authors.remove(i);
+                        break;
+                    }
+                }
+            }
+        } while (option != 3);
 
+    }
     public void promptUnregisteredUserForMenuInput() {
         int option;
         while (true)

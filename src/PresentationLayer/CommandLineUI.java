@@ -80,15 +80,9 @@ public class CommandLineUI implements Observer {
         frame.setVisible(true);
     }
 
-    public Document showSubmitDocumentPage() {
-        System.out.println("Document submission selected.");
-        System.out.println("Please specify the file type.");
-        String type = reader.nextLine();
-        while (!type.equalsIgnoreCase("DOCX") && !type.equalsIgnoreCase("PDF") && !type.equalsIgnoreCase("PNG")) {
-            System.out.println("Please enter a valid type.");
-            type = reader.nextLine();
-        }
-        return new Document(1, "A Long Book", new ArrayList<Author>(), "November 25, 2018", type, 65, 12.99);
+    public void showSubmitDocumentPage() {
+        System.out.println("Document submission selected");
+    	System.out.println("Please specify the file type");
     }
 
     public void showRemoveDocumentPage(ArrayList<Document> documents) {
@@ -104,6 +98,7 @@ public class CommandLineUI implements Observer {
     }
 
     public void showDocumentUpdateOptions(Document doc) {
+    	System.out.println("\n" + doc.toString());
         System.out.println("\nPlease select one of the attributes to change:" +
                 "\n1. Document id" +
                 "\n2. Document name" +
@@ -123,69 +118,6 @@ public class CommandLineUI implements Observer {
         );
     }
 
-//    public void changeDocument(Document doc) {
-//        while (true) {
-//            try {
-//                System.out.println(doc);
-//                System.out.println(
-//                        "\nPlease select one of the attribute to change!" +
-//                                "\n1. Document ID" +
-//                                "\n2. Document Name" +
-//                                "\n3. Date Created" +
-//                                "\n4. Document Price" +
-//                                "\n5. Quantity" +
-//                                "\n6. Authors" +
-//                                "\n7. Exit"
-//                );
-//                int option = reader.nextInt();
-//                reader.nextLine();
-//                if (option == 1) {
-//                    System.out.println("What would you like the document ID be?");
-//                    doc.setId(reader.nextInt());
-//                } else if (option == 2) {
-//                    System.out.println("What would you like the document name be?");
-//                    doc.setName(reader.nextLine());
-//                } else if (option == 3) {
-//                    System.out.println("What would you like the document date created be?");
-//                    doc.setDate(reader.nextLine());
-//                } else if (option == 4) {
-//                    System.out.println("What would you like the document price be?");
-//                    doc.setPrice(reader.nextInt());
-//                } else if (option == 5) {
-//                    System.out.println("What would you like the document quantity be?");
-//                    doc.setQuantity(reader.nextInt());
-//                } else if (option == 6) {
-//                    int option2;
-//                    do {
-//                        System.out.println(
-//                                "\nPlease select one of the following!" +
-//                                        "\n1. Add Author" +
-//                                        "\n2. Remove Author" +
-//                                        "\n3. Quit Author Editor");
-//                        option2 = reader.nextInt();
-//                        reader.nextLine();
-//                        if (option2 == 1) {
-//                            System.out.println("Tell me the Author's name to Add");
-//                            doc.getAuthors().add(new Author(reader.nextLine()));
-//                        } else if (option2 == 2) {
-//                            System.out.println("Tell me the Author's name to Delete");
-//                            for (int i = 0; i < doc.getAuthors().size(); i++) {
-//                                if (doc.getAuthors().get(i).getName().equalsIgnoreCase(reader.nextLine())) {
-//                                    doc.getAuthors().remove(i);
-//                                    break;
-//                                }
-//                            }
-//                        }
-//                    } while (option2 != 3);
-//
-//                } else if (option == 7) {
-//                    break;
-//                }
-//            } catch (InputMismatchException ex) {
-//                System.out.println("Must be an integer value!\n Please Try Again!");
-//            }
-//        }
-//    }
 
     private void displayAllDocuments(ArrayList<Document> documents) {
         System.out.println("\nFormat(INDEX: ID: NAME: DATE: PRICE: QUANTITY: AUTHORS)");
