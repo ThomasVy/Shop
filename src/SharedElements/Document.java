@@ -67,12 +67,12 @@ public class Document {
     public String toString()
     {
     	StringBuilder string = new StringBuilder();
-    	string.append(documentId).append("\t"+name).append("\t"+dateCreated).append("\t" +price).append("\t" + availableAmount + "\t\t");
+    	string.append(documentId).append("    "+name).append("    "+dateCreated).append("    " +price).append("    " + availableAmount + "    ");
     	for(Author author: authors)
     	{
-    		string.append(author.getName() + ",");
+    		string.append(author.getName() + ", ");
     	}
-    	string.deleteCharAt(string.length()-1);
+    	string.deleteCharAt(string.length()-2);
     	return string.toString();
     }
 

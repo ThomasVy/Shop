@@ -9,23 +9,18 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class CommandLineUI implements UserInterface {
+public class CommandLineUI implements Observer {
 
-    static Scanner reader = new Scanner(System.in);
+    Scanner reader = new Scanner(System.in);
 
     // userType == 1 -> user is an Operator
     // userType == 2 -> user is a Register Buyer
     // userType == 3 -> user is an Unregistered Buyer
     // this can be swapped with static User type when everything else is implemented
     // just check what type of user they are after
-    static int userType;
-
-    static String username;
-
     public CommandLineUI() {
     }
 
-    @Override
     public void showStartingPage() {
         // Displaying some dialogue for easy user interaction
         System.out.println(
@@ -37,7 +32,6 @@ public class CommandLineUI implements UserInterface {
         );
     }
 
-    @Override
     public void showUnregisteredHomePage() {
             System.out.println(
                     "\nWelcome to BIG BOOK ENERGY.inc!"
@@ -57,9 +51,7 @@ public class CommandLineUI implements UserInterface {
         );
     }
 
-    @Override
-    public void showRegisteredHomePage(String username) {
-    	this.username = username; 
+    public void showRegisteredHomePage(String username) { 
         System.out.println(
                         "\nWelcome " + username + " to BIG BOOK ENERGY.inc!"
         );
@@ -94,9 +86,7 @@ public class CommandLineUI implements UserInterface {
         }
     }
 
-    @Override
     public void showOperatorHomePage(String username) {
-    	this.username = username;
         System.out.println(
                 "\nWelcome " + username + " to BIG BOOK ENERGY.inc!"
         );
@@ -127,11 +117,6 @@ public class CommandLineUI implements UserInterface {
 
     }
 
-    @Override
-    public void showLoginPage() {
-    }
-
-    @Override
     public Document showSubmitDocumentPage() {
         System.out.println("Document submission selected");
     	System.out.println("Please specify the file type");
@@ -145,14 +130,12 @@ public class CommandLineUI implements UserInterface {
 
     }
 
-    @Override
     public void showRemoveDocumentPage(ArrayList<Document> documents) {
         System.out.println("Document removal selected.");
         displayAllDocuments(documents);
         System.out.println("Please the indicate the document you would like to remove with the corresponding index number");
     }
 
-    @Override
     public void showUpdateDocumentPage(ArrayList<Document> documents) {
         System.out.println("Document update selected");
         displayAllDocuments(documents);
@@ -162,6 +145,7 @@ public class CommandLineUI implements UserInterface {
     {
     	   while(true) {
     		   try {
+    			   System.out.println(doc);
     			   System.out.println(
     		                 "\nPlease select one of the attribute to change!" +
     		                         "\n1. Document ID" +
@@ -235,14 +219,15 @@ public class CommandLineUI implements UserInterface {
     }
     public void displayAllDocuments(ArrayList<Document> documents)
     {
-       System.out.println("INDEX\tID\tNAME\t\t\tDATE\t\t\tPRICE\tQUANTITY\tAUTHORS");
+       System.out.println("Format(INDEX: ID: NAME: DATE: PRICE: QUANTITY: AUTHORS)");
 	   for(int i = 0; i<documents.size();i++)
        {
-       	System.out.println(i + "\t" + documents.get(i).toString());
+       	System.out.println(i + "    " + documents.get(i).toString());
        	System.out.flush();
        }
     }
-    @Override
+
+    
     public void showPromotionListPage(ArrayList<Document> promotionList) {
         System.out.println("Here is the list of all the promotions!");
         for(Document promotion : promotionList) {
@@ -254,7 +239,6 @@ public class CommandLineUI implements UserInterface {
         }
     }
 
-    @Override
     public void showBookSearchPage() {
         System.out.println("Search the name of the book you're looking for!");
 
@@ -274,7 +258,6 @@ public class CommandLineUI implements UserInterface {
         }
     }
 
-    @Override
     public void showOrderPlacementPage() {
         System.out.println("Compose the order you'd like to place");
     }
@@ -292,17 +275,16 @@ public class CommandLineUI implements UserInterface {
         System.out.println("Total Amount Owed: $" + order.getAmount());
     }
 
-    @Override
+
     public void showMakePaymentPage() {
         System.out.println("Confirm the payment you'd like to make");
     }
 
-    @Override
+ 
     public void showRegistrationPage() {
         System.out.println("Thanks for choosing to register");
     }
 
-    @Override
     public void showUnsubscribePage() {
         System.out.println("Please confirm you'd wish to unsubscribe");
     }
