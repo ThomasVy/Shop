@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class OnlineSystem {
 
     private static Scanner reader = new Scanner(System.in);
-    private static int userType;
     private static User user;
 
     private static OnlineSystem instance;
@@ -21,8 +20,7 @@ public class OnlineSystem {
     private UserDatabaseHelper udh;
     private CommandLineUI ui;
 
-    private ArrayList<Observer> observers = new ArrayList<Observer>();
-
+    private ArrayList<Observer> observers;
     private ArrayList<SystemAdmin> admins;
     private ArrayList<Manager> managers;
     private ArrayList<Order> orders;
@@ -31,6 +29,7 @@ public class OnlineSystem {
     private ArrayList<StaffMember> staff;
 
     private OnlineSystem() {
+    	observers = new ArrayList<Observer>();
         promotionList = new PromotionList();
         orders = new ArrayList<Order>();
         admins = new ArrayList<SystemAdmin>();
@@ -116,7 +115,7 @@ public class OnlineSystem {
                         promptOperatorForMenuInput();
 
                     } else {
-                        System.out.println("ERROR:" +
+                    	ui.printMessage("ERROR:" +
                                 userCheck.getSimpleName() +
                                 " user type home page not implemented");
                     }
@@ -129,10 +128,10 @@ public class OnlineSystem {
                 } else if (option == 3) {
                     System.exit(1);
                 } else {
-                    System.out.println("\nYour entry was not an option try again!");
+                	ui.printMessage("\nYour entry was not an option try again!");
                 }
             } catch (InputMismatchException ex) {
-                System.out.println("Must be an integer value!");
+            	ui.printMessage("Must be an integer value!");
                 reader.nextLine();
             }
         }
@@ -145,81 +144,21 @@ public class OnlineSystem {
                 ui.showOperatorMenu();
                 option = Integer.parseInt(reader.nextLine());
                 if (option == 1) {
-                	System.out.println("Please enter the document type:");
-                	String type = reader.nextLine();
-                	while(!type.equalsIgnoreCase("PDF")&&!type.equalsIgnoreCase("DOCX")&&!type.equalsIgnoreCase("PNG"))
-                	{
-                		System.out.println("Please enter a valid type");
-                		type = reader.nextLine();
-                	}
-                	int id = -1;
-                	while(id<0)
-                	{
-	                	System.out.println("Enter the document Id (must be greater than 0):");
-	                	id = Integer.parseInt(reader.nextLine());
-                	}
-                	System.out.println("Enter the book name:");
-                	String name = reader.nextLine();
-                    ArrayList<Author> authors = new ArrayList<Author>();
-            		authorOptions(authors);
-                	System.out.println("Enter the date the document was created:");
-                	String date =  reader.nextLine();
-                	System.out.println("Enter the price of the document:");
-                	double price =  Double.parseDouble(reader.nextLine());
-                	System.out.println("Enter the quantity of the document available:");
-                	int quantity = Integer.parseInt(reader.nextLine());
-                	Document doc = new Document(id, name, authors, date, type , quantity, price);
-                	if(doc.performUpload())
-                	{
-	                	ddh.insert(doc);
-	                	System.out.println("Successful addition of document!");
-                	}
-                	else
-                		System.out.println("Failed to upload document!");
-                	
+                	addDocument();
                 } else if (option == 2) {
-                    ui.showRemoveDocumentPage(ddh.getDocumentDatabase());
-                    if (ddh.getDocumentDatabase().size() == 0) {
-                        System.out.println("Sorry! There are no documents available.");
-                        continue;
-                    }
-                    int removalIndex;
-                    while (true) {
-                        try {
-                            removalIndex = Integer.parseInt(reader.nextLine());
-                            if (removalIndex >= 0 && removalIndex < ddh.getDocumentDatabase().size())
-                                break;
-                        } catch (InputMismatchException e) {
-                            System.out.println("Must be an integer value");
-                        }
-                        System.out.println("Please try again");
-                    }
-                    removeDocument(removalIndex);
+                   removeDocument();
                 } else if (option == 3) {
-                    ui.showUpdateDocumentPage(ddh.getDocumentDatabase());
-                    int updateIndex;
-                    while (true) {
-                        try {
-                            updateIndex = Integer.parseInt(reader.nextLine());
-                            if (updateIndex >= 0 && updateIndex < ddh.getDocumentDatabase().size())
-                                break;
-                        } catch (InputMismatchException e) {
-                            System.out.println("Must be an integer value");
-                        }
-                        System.out.println("Please try again");
-                    }
-                   documentOptions(ddh.getDocumentDatabase().get(updateIndex));
-                    
+                   updateDocument();
                 } else if (option == 4) {
                     ui.demoCoverArt();
                 } else if (option == 5) {
-                    System.out.println("Have a nice day! Please comeback again");
+                	ui.printMessage("Have a nice day! Please comeback again");
                     establishUser();
                 } else {
-                    System.out.println("Your entry was not an option try again!");
+                	ui.printMessage("Your entry was not an option try again!");
                 }
             } catch (InputMismatchException ex) {
-                System.out.println("Must be an integer value!");
+            	ui.printMessage("Must be an integer value!");
                 reader.nextLine();
             }
 
@@ -232,27 +171,27 @@ public class OnlineSystem {
               int option = reader.nextInt();
               reader.nextLine();
               if (option == 1) {
-                  System.out.println("What would you like the document ID be?");
-                  doc.setId(reader.nextInt());
+            	  ui.printMessage("What would you like the document ID be?");
+                  doc.setId(Integer.parseInt(reader.nextLine()));
               } else if (option == 2) {
-                  System.out.println("What would you like the document name be?");
+            	  ui.printMessage("What would you like the document name be?");
                   doc.setName(reader.nextLine());
               } else if (option == 3) {
-                  System.out.println("What would you like the document date created be?");
+            	  ui.printMessage("What would you like the document date created be?");
                   doc.setDate(reader.nextLine());
               } else if (option == 4) {
-                  System.out.println("What would you like the document price be?");
-                  doc.setPrice(reader.nextInt());
+            	  ui.printMessage("What would you like the document price be?");
+                  doc.setPrice(Double.parseDouble(reader.nextLine()));
               } else if (option == 5) {
-                  System.out.println("What would you like the document quantity be?");
-                  doc.setQuantity(reader.nextInt());
+            	  ui.printMessage("What would you like the document quantity be?");
+                  doc.setQuantity(Integer.parseInt(reader.nextLine()));
               } else if (option == 6) {
                   authorOptions(doc.getAuthors());
               } else if (option == 7) {
                   break;
               }
           } catch (InputMismatchException ex) {
-              System.out.println("Must be an integer value!\n Please Try Again!");
+        	  ui.printMessage("Must be an integer value!\n Please Try Again!");
           }
       }
     }
@@ -264,10 +203,10 @@ public class OnlineSystem {
             option = reader.nextInt();
             reader.nextLine();
             if (option == 1) {
-                System.out.println("Tell me the Author's name to Add");
+            	ui.printMessage("Tell me the Author's name to Add");
                 authors.add(new Author(reader.nextLine()));
             } else if (option == 2) {
-                System.out.println("Tell me the Author's name to Delete");
+            	ui.printMessage("Tell me the Author's name to Delete");
                 String input = reader.nextLine();
                 for (int i = 0; i < authors.size(); i++) {
                     if (authors.get(i).getName().equalsIgnoreCase(input)) {
@@ -303,12 +242,12 @@ public class OnlineSystem {
                 } else if (option == 5) {
                     ui.demoCoverArt();
                 } else if (option == 6) {
-                    System.out.println("Thanks for coming!");
+                	ui.printMessage("Thanks for coming!");
                     establishUser();
                 }
 
             } catch (InputMismatchException ex) {
-                System.out.println("Must be an integer value!");
+            	ui.printMessage("Must be an integer value!");
                 reader.nextLine();
             }
     }
@@ -335,7 +274,7 @@ public class OnlineSystem {
                     if (promotionList.getListOfSubscribers().contains(user))
                         ui.showPromotionsListPage(promotionList.getListOfPromotions());
                     else
-                        System.out.println("Sorry you unsubscribed from the promotions list!");
+                    	ui.printMessage("Sorry you unsubscribed from the promotions list!");
                 } else if (option == 5 && ((RegisteredBuyer) user).getSubscription()) {
                     ui.showUnsubscribePage();
                     unsubscribeRegisteredBuyer((RegisteredBuyer) user);
@@ -350,13 +289,13 @@ public class OnlineSystem {
                     promotionList.addPromotion();
                     notifyAllObservers();
                 } else if (option == 8) {
-                    System.out.println("\nHave a nice day! Please comeback again");
+                	ui.printMessage("\nHave a nice day! Please comeback again");
                     establishUser();
                 } else {
-                    System.out.println("Your entry was not an option try again!");
+                	ui.printMessage("Your entry was not an option try again!");
                 }
             } catch (InputMismatchException ex) {
-                System.out.println("Must be an integer value!");
+            	ui.printMessage("Must be an integer value!");
                 reader.nextLine();
             }
         }
@@ -371,22 +310,22 @@ public class OnlineSystem {
     }
 
     public User login() {
-        System.out.println("Please type in your username");
+    	ui.printMessage("Please type in your username");
         String username = reader.nextLine();
-        System.out.println("Please type in your password");
+        ui.printMessage("Please type in your password");
         String password = reader.nextLine();
         return udh.verifyUser(username, password);
     }
 
     public void registerUser() {
-        System.out.println("Enter your username");
+        ui.printMessage("Enter your username");
         reader.nextLine();
         String username = reader.nextLine();
-        System.out.println("Enter your password");
+        ui.printMessage("Enter your password");
         String password = reader.nextLine();
-        System.out.println("Enter your name");
+        ui.printMessage("Enter your name");
         String name = reader.nextLine();
-        System.out.println("Enter your email");
+        ui.printMessage("Enter your email");
         String email = reader.nextLine();
         RegisteredBuyer rb = new RegisteredBuyer(username, password, name, email);
         udh.insert(rb);
@@ -395,18 +334,14 @@ public class OnlineSystem {
     }
 
     public void composeOrder() {
-        System.out.println("Please enter your address");
+        ui.printMessage("Please enter your address");
         String address = reader.nextLine();
         Order theOrder = new Order(user, address);
         boolean orderComplete = false;
         boolean orderCancelled = false;
         int option;
         while(true) {
-            System.out.println("Please select an option!" +
-                            "\n1. Search a book to add" +
-                            "\n2. View all books" +
-                            "\n3. Cancel order"
-                    );
+        	ui.showComposeOrderMenu();
             String integer = reader.nextLine();
             if(integer.compareTo("1") == 0) {
                 break;
@@ -418,23 +353,23 @@ public class OnlineSystem {
                 return;
             }
             else {
-                System.out.println("Your entry is not an option");
+                ui.printMessage("Your entry is not an option");
             }
 
         }
         while (!orderComplete && !orderCancelled) {
-            System.out.println("Enter the book you'd like to order");
+            ui.printMessage("Enter the book you'd like to order");
             String query = reader.nextLine();
             Document document = searchForDocument(query);
             // if document doesn't exist print an error
             if (document == null) {
-                System.out.println("No book with that name found! SORRY!");
+                ui.printMessage("No book with that name found! SORRY!");
             }
             // if document exists continue
             else {
                 // if document is out of stock print an error
                 if (document.getAvailableAmount() == 0) {
-                    System.out.println("Sorry we are out of stock!");
+                    ui.printMessage("Sorry we are out of stock!");
                 }
                 // else if document is in stock show it and add it to the order
                 else {
@@ -445,11 +380,7 @@ public class OnlineSystem {
                     while (true) {
                         try {
                             // prompt the user if they'd like to add more to the order
-                            System.out.println("Would you like to add to your order?" +
-                                    "\n1. Yes add more books" +
-                                    "\n2. No that is all!" +
-                                    "\n3. View all books" +
-                                    "\n4. Cancel order");
+                            ui.showMoreOrderOptions();
                             option = reader.nextInt();
                             // if yes then prompt break loop and clear scanner
                             if (option == 1) {
@@ -471,10 +402,10 @@ public class OnlineSystem {
                                 orderCancelled = true;
                             }
                             else {
-                                System.out.println("Your entry was not an option try again!");
+                                ui.printMessage("Your entry was not an option try again!");
                             }
                         } catch (InputMismatchException ex2) {
-                            System.out.println("Must be an integer value!");
+                            ui.printMessage("Must be an integer value!");
                             reader.nextLine();
                         }
                         if(orderCancelled) {
@@ -497,7 +428,7 @@ public class OnlineSystem {
     public Document searchForDocument(String query) {
         ArrayList<Document> documents = ddh.getDocumentDatabase();
         if (documents == null) {
-            System.out.println("ERROR: Database fatal error");
+            ui.printMessage("ERROR: Database fatal error");
         } else {
             for (Document doc : documents) {
                 if (doc.getName().compareToIgnoreCase(query) == 0) {
@@ -523,11 +454,11 @@ public class OnlineSystem {
                 amountOwed += docs.getPrice();
             }
         }
-        System.out.println("You owe $" + amountOwed +
+        ui.printMessage("You owe $" + amountOwed +
                 "\nPlease type in your credit card number: ");
         String cardNumber = reader.nextLine();
         reader.nextLine();
-        System.out.println("Thank you for your payment have a nice day!");
+        ui.printMessage("Thank you for your payment have a nice day!");
     }
 
     public void registerOrdinaryBuyer(OrdinaryBuyer ordinaryBuyer) {
@@ -536,56 +467,125 @@ public class OnlineSystem {
 
     public void resubscribeRegisteredBuyer(RegisteredBuyer registeredBuyer) {
         int option;
-        System.out.println("Select on of the following" +
-                "\n1. Yes I'd Like to resubscribe" +
-                "\n2. No I would like to stay unsubscribed");
+        ui.showConfirmationRMenu();
         while (true) {
             try {
                 option = reader.nextInt();
                 if (option == 1) {
-                    System.out.println("You have sucessfully resubscirbed! (we love you :] )");
+                    ui.printMessage("You have sucessfully resubscirbed! (we love you :] )");
                     promotionList.getListOfSubscribers().add(registeredBuyer);
                     registeredBuyer.setSubscription(true);
                     break;
                 } else if (option == 2) {
-                    System.out.println("You are staying unsubscribed, we hope you'll reconsider :(");
+                    ui.printMessage("You are staying unsubscribed, we hope you'll reconsider :(");
                     break;
                 } else {
-                    System.out.println("You selected an option not available!");
+                    ui.printMessage("You selected an option not available!");
                 }
             } catch (InputMismatchException ex) {
                 reader.nextLine();
-                System.out.println("Must be an integer value!");
+                ui.printMessage("Must be an integer value!");
             }
         }
     }
 
     public void unsubscribeRegisteredBuyer(RegisteredBuyer registeredBuyer) {
         int option;
-        System.out.println("Select on of the following" +
-                "\n1. Yes I'd Like to unsubscribe" +
-                "\n2. No I would like to stay subscribed");
+        ui.showConfirmationUMenu();
         while (true) {
             try {
                 option = reader.nextInt();
                 if (option == 1) {
-                    System.out.println("You have sucessfully unsubscirbed! (we'll miss you :[ )");
+                    ui.printMessage("You have sucessfully unsubscirbed! (we'll miss you :[ )");
                     promotionList.getListOfSubscribers().remove(registeredBuyer);
                     registeredBuyer.setSubscription(false);
                     break;
                 } else if (option == 2) {
-                    System.out.println("Thanks for staying subscribed, we'll make sure to bring the best deals!");
+                    ui.printMessage("Thanks for staying subscribed, we'll make sure to bring the best deals!");
                     break;
                 } else {
-                    System.out.println("You selected an option not available!");
+                    ui.printMessage("You selected an option not available!");
                 }
             } catch (InputMismatchException ex) {
                 reader.nextLine();
-                System.out.println("Must be an integer value!");
+                ui.printMessage("Must be an integer value!");
             }
         }
     }
 
+
+    private void addDocument()
+    {
+    	ui.printMessage("Please enter the document type:");
+    	String type = reader.nextLine();
+    	while(!type.equalsIgnoreCase("PDF")&&!type.equalsIgnoreCase("DOCX")&&!type.equalsIgnoreCase("PNG"))
+    	{
+    		ui.printMessage("Please enter a valid type");
+    		type = reader.nextLine();
+    	}
+    	int id = -1;
+    	while(id<0)
+    	{
+        	ui.printMessage("Enter the document Id (must be greater than 0):");
+        	id = Integer.parseInt(reader.nextLine());
+    	}
+    	ui.printMessage("Enter the book name:");
+    	String name = reader.nextLine();
+        ArrayList<Author> authors = new ArrayList<Author>();
+		authorOptions(authors);
+    	ui.printMessage("Enter the date the document was created:");
+    	String date =  reader.nextLine();
+    	ui.printMessage("Enter the price of the document:");
+    	double price =  Double.parseDouble(reader.nextLine());
+    	ui.printMessage("Enter the quantity of the document available:");
+    	int quantity = Integer.parseInt(reader.nextLine());
+    	Document doc = new Document(id, name, authors, date, type , quantity, price);
+    	if(doc.performUpload())
+    	{
+        	ddh.insert(doc);
+        	ui.printMessage("Successful addition of document!");
+    	}
+    	else
+    		ui.printMessage("Failed to upload document!");
+    	
+    }
+    private void removeDocument()
+    {
+    	 ui.showRemoveDocumentPage(ddh.getDocumentDatabase());
+         if (ddh.getDocumentDatabase().size() == 0) {
+             ui.printMessage("Sorry! There are no documents available.");
+             return;
+         }
+         int removalIndex;
+         while (true) {
+             try {
+                 removalIndex = Integer.parseInt(reader.nextLine());
+                 if (removalIndex >= 0 && removalIndex < ddh.getDocumentDatabase().size())
+                     break;
+             } catch (InputMismatchException e) {
+                 ui.printMessage("Must be an integer value");
+             }
+             ui.printMessage("Please try again");
+         }
+         removeDocument(removalIndex);
+    }
+    private void updateDocument ()
+    {
+    	  ui.showUpdateDocumentPage(ddh.getDocumentDatabase());
+          int updateIndex;
+          while (true) {
+              try {
+                  updateIndex = Integer.parseInt(reader.nextLine());
+                  if (updateIndex >= 0 && updateIndex < ddh.getDocumentDatabase().size())
+                      break;
+              } catch (InputMismatchException e) {
+                  ui.printMessage("Must be an integer value");
+              }
+              ui.printMessage("Please try again");
+          }
+         documentOptions(ddh.getDocumentDatabase().get(updateIndex));
+          
+    }
     public ArrayList<Document> getPromotionList() {
         return new ArrayList<Document>();
     }
@@ -594,7 +594,7 @@ public class OnlineSystem {
         if (document.performUpload()) {
             ddh.getDocumentDatabase().add(document);
         } else
-            System.out.println("Could not perform upload");
+            ui.printMessage("Could not perform upload");
     }
 
     public void updateDocument(Document document) {
@@ -616,5 +616,7 @@ public class OnlineSystem {
     public void updateStaffMemberInfo(StaffMember staffMember) {
 
     }
+    
+    
 
 }
