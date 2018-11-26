@@ -150,7 +150,7 @@ public class CommandLineUI implements UserInterface {
     		System.out.println("Please enter a valid type");
     		type = reader.nextLine();
     	}
-    	return new Document(1, "hello", new ArrayList<Author>(), "10", type , 65);
+    	return new Document(1, "hello", new ArrayList<Author>(), "10", type , 65, 12.99);
     }
 
     @Override
@@ -198,7 +198,19 @@ public class CommandLineUI implements UserInterface {
     @Override
     public void showOrderPlacementPage() {
         System.out.println("Compose the order you'd like to place");
-        System.out.println("Please search the book you'd like to order");
+    }
+
+    public void showFinalOrder(Order order) {
+        System.out.println("Order#" + order.getOrderId() + " will cost $" + order.getAmount() +
+                            "\nShipping Address: " + order.getShippingAddress() +
+                            "\nDate Ordered: " + order.getDateOrdered()
+        );
+
+        for(Document doc: order.getItems()) {
+            System.out.println("Item: " + doc.getName() + "     $" + doc.getPrice());
+        }
+
+        System.out.println("Total Amount Owed: $" + order.getAmount());
     }
 
     @Override

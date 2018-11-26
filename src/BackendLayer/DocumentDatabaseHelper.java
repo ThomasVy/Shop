@@ -12,7 +12,7 @@ public class DocumentDatabaseHelper implements DatabaseHelper {
 		// hardcoded for testing promotion list
 		ArrayList<Author> authors1 = new ArrayList<Author>();
 		authors1.add(new Author("Dave Pilkey"));
-		DocumentDatabase.add(new Document(1,"Captain Underpants", authors1, 9.99, 30));
+		DocumentDatabase.add(new Document(1,"Captain Underpants", authors1, "September 1st 1997", "pdf",30, 9.99));
 	}
 
 	public ArrayList<Document> getDocumentDatabase() {

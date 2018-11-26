@@ -250,9 +250,12 @@ public class OnlineSystem {
     }
 
     public void composeOrder() {
-        Order theOrder = new Order(user);
+        System.out.println("Please enter your address");
+        String address = reader.nextLine();
+        Order theOrder = new Order(user, address);
         boolean orderComplete = false;
         while(!orderComplete) {
+            System.out.println("Enter the book you'd like to order");
             String query = reader.nextLine();
             int option;
             Document document = searchForDocument(query);
@@ -267,6 +270,7 @@ public class OnlineSystem {
                     ui.showBookFound(document);
                     theOrder.setAmount(theOrder.getAmount() + document.getPrice());
                     document.setAvailableAmount(document.getAvailableAmount() - 1);
+                    theOrder.getItems().add(document);
                     while (true) {
                         try {
                             System.out.println("Would you like to add to your order?" +
@@ -274,12 +278,12 @@ public class OnlineSystem {
                                     "\n2. No that is all!");
                             option = reader.nextInt();
                             if (option == 1) {
-                                System.out.println("Enter the next book you'd like to search");
                                 reader.nextLine();
                                 break;
                             } else if (option == 2) {
                                 orderComplete = true;
                                 placeOrder(theOrder);
+                                ui.showFinalOrder(theOrder);
                                 reader.nextLine();
                                 break;
                             } else {
