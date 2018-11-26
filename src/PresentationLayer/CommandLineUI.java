@@ -23,7 +23,22 @@ public class CommandLineUI implements Observer {
                 "\n3. Quit"
         );
     }
-
+    public void showComposeOrderMenu()
+    {
+    	 System.out.println("Please select an option!" +
+                 "\n1. Search a book to add" +
+                 "\n2. View all books" +
+                 "\n3. Cancel order"
+         );
+    }
+    public void showMoreOrderOptions()
+    {
+    	System.out.println("Would you like to add to your order?" +
+                "\n1. Yes add more books" +
+                "\n2. No that is all!" +
+                "\n3. View all books" +
+                "\n4. Cancel order");
+    }
     public void showUnregisteredHomePage() {
         System.out.println("\nWelcome to BIG BOOK ENERGY, Inc!");
     }
@@ -205,6 +220,18 @@ public class CommandLineUI implements Observer {
     @Override
     public void showNotification() {
         System.out.println("\nThe promotions list has been updated!");
+    }
+    
+    public void showConfirmationRMenu() {
+    	 System.out.println("Select one of the following" +
+                 "\n1. Yes, I'd Like to resubscribe" +
+                 "\n2. No, I would like to stay unsubscribed");
+    }
+    public void showConfirmationUMenu()
+    {
+    	System.out.println("Select one of the following" +
+                "\n1. Yes, I'd Like to unsubscribe" +
+                "\n2. No, I would like to stay subscribed");
     }
 
 }
