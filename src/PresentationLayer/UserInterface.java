@@ -5,7 +5,7 @@ import SharedElements.Document;
 
 import java.util.ArrayList;
 
-public interface UserInterface extends Observer{
+public interface UserInterface extends Observer {
 
     public void showStartingPage();
     public void showUnregisteredHomePage();
