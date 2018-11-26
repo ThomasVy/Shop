@@ -158,10 +158,15 @@ public class OnlineSystem {
                 ui.showUnregisteredMenu();
                 option = reader.nextInt();
                 if(option == 1) {
+                    reader.nextLine();
                     ui.showBookSearchPage();
+                    String document = reader.nextLine();
+                    ui.showBookFound(searchForDocument(document));
                 }
                 else if (option == 2) {
+                    reader.nextLine();
                     ui.showOrderPlacementPage();
+                    composeOrder();
                 }
                 else if (option == 3) {
                     ui.showMakePaymentPage();
