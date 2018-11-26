@@ -306,15 +306,11 @@ public class CommandLineUI implements UserInterface {
     @Override
     public void showMakePaymentPage() {
         System.out.println("Confirm the payment you'd like to make");
-
     }
 
     @Override
     public void showRegistrationPage() {
-        System.out.println("Thanks for choosing to register" +
-                            "please enter your username"
-        );
-
+        System.out.println("Thanks for choosing to register");
     }
 
     @Override

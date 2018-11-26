@@ -207,9 +207,9 @@ public class OnlineSystem {
                 } else if (option == 3) {
                     ui.showMakePaymentPage();
                     makePayment();
-
                 } else if (option == 4) {
                     ui.showRegistrationPage();
+                    registerUser();
                 } else if (option == 5) {
                     ui.demoCoverArt();
                 } else if (option == 6) {
@@ -281,6 +281,21 @@ public class OnlineSystem {
         System.out.println("Please type in your password");
         String password = reader.nextLine();
         return udh.verifyUser(username, password);
+    }
+
+    public void registerUser() {
+        System.out.println("Enter your username");
+        reader.nextLine();
+        String username = reader.nextLine();
+        System.out.println("Enter your password");
+        String password = reader.nextLine();
+        System.out.println("Enter your name");
+        String name = reader.nextLine();
+        System.out.println("Enter your email");
+        String email = reader.nextLine();
+        RegisteredBuyer rb = new RegisteredBuyer(username, password, name, email);
+        udh.insert(rb);
+        establishUser();
     }
 
     public void composeOrder() {
@@ -364,11 +379,14 @@ public class OnlineSystem {
         double amountOwed = 0;
         for (Order order : orders) {
             // just here when we implement multi users using at same time
-            if (order.getBuyer().getUsername().compareTo(user.getUsername()) == 0) ;
-            {
-                for (Document docs : order.getItems()) {
-                    amountOwed += docs.getPrice();
-                }
+//            if (order.getBuyer().getUsername().compareTo(user.getUsername()) == 0) ;
+//            {
+//                for (Document docs : order.getItems()) {
+//                    amountOwed += docs.getPrice();
+//                }
+//            }
+            for (Document docs : order.getItems()) {
+                amountOwed += docs.getPrice();
             }
         }
         System.out.println("You owe $" + amountOwed +
