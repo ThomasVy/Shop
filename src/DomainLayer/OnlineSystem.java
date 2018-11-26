@@ -9,6 +9,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class OnlineSystem {
+
     private static Scanner reader = new Scanner(System.in);
     private static int userType;
     private static User user;
@@ -227,7 +228,7 @@ public class OnlineSystem {
         int option;
         while (true) {
             try {
-                ui.showRegisteredMenu();
+                ui.showRegisteredMenu(((RegisteredBuyer)user).getSubscription());
                 option = reader.nextInt();
                 if (option == 1) {
                     reader.nextLine();
@@ -246,10 +247,15 @@ public class OnlineSystem {
                         ui.showPromotionListPage(promotionList.getListOfPromotions());
                     else
                         System.out.println("Sorry you unsubscribed from the promotions list!");
-                } else if (option == 5) {
+                } else if (option == 5 && ((RegisteredBuyer) user).getSubscription()) {
                     ui.showUnsubscribePage();
                     unsubscribeRegisteredBuyer((RegisteredBuyer) user);
-                } else if (option == 6) {
+                } else if (option == 5 && !((RegisteredBuyer)user).getSubscription()) {
+                    ui.showResubscribePage();
+                    resubscribeRegisteredBuyer((RegisteredBuyer)user);
+
+                }
+                else if (option == 6) {
                     ui.demoCoverArt();
                 } else if (option == 7) {
                     promotionList.addPromotion();
@@ -303,10 +309,27 @@ public class OnlineSystem {
         String address = reader.nextLine();
         Order theOrder = new Order(user, address);
         boolean orderComplete = false;
+        int option;
+        while(true) {
+            System.out.println("Please select an option!" +
+                            "\n1. Search a book a book to add" +
+                            "\n2. View all books"
+                    );
+            String integer = reader.nextLine();
+            if(integer.compareTo("1") == 0) {
+                break;
+            }
+            else if(integer.compareTo("2") == 0) {
+                ui.displayAllDocuments(ddh.getDocumentDatabase());
+            }
+            else {
+                System.out.println("Your entry is not an option");
+            }
+
+        }
         while (!orderComplete) {
             System.out.println("Enter the book you'd like to order");
             String query = reader.nextLine();
-            int option;
             Document document = searchForDocument(query);
             // if document doesn't exist print an error
             if (document == null) {
@@ -329,7 +352,8 @@ public class OnlineSystem {
                             // prompt the user if they'd like to add more to the order
                             System.out.println("Would you like to add to your order?" +
                                     "\n1. Yes add more books" +
-                                    "\n2. No that is all!");
+                                    "\n2. No that is all!" +
+                                    "\n3. View all books");
                             option = reader.nextInt();
                             // if yes then prompt break loop and clear scanner
                             if (option == 1) {
@@ -343,7 +367,11 @@ public class OnlineSystem {
                                 ui.showFinalOrder(theOrder);
                                 reader.nextLine();
                                 break;
-                            } else {
+                            }
+                            else if (option == 3) {
+                                ui.displayAllDocuments(ddh.getDocumentDatabase());
+                            }
+                            else {
                                 System.out.println("Your entry was not an option try again!");
                             }
                         } catch (InputMismatchException ex2) {
@@ -400,6 +428,32 @@ public class OnlineSystem {
 
     }
 
+    public void resubscribeRegisteredBuyer(RegisteredBuyer registeredBuyer) {
+        int option;
+        System.out.println("Select on of the following" +
+                "\n1. Yes I'd Like to resubscribe" +
+                "\n2. No I would like to stay unsubscribed");
+        while (true) {
+            try {
+                option = reader.nextInt();
+                if (option == 1) {
+                    System.out.println("You have sucessfully resubscirbed! (we love you :] )");
+                    promotionList.getListOfSubscribers().add(registeredBuyer);
+                    registeredBuyer.setSubscription(true);
+                    break;
+                } else if (option == 2) {
+                    System.out.println("You are staying unsubscribed, we hope you'll reconsider :(");
+                    break;
+                } else {
+                    System.out.println("You selected an option not available!");
+                }
+            } catch (InputMismatchException ex) {
+                reader.nextLine();
+                System.out.println("Must be an integer value!");
+            }
+        }
+    }
+
     public void unsubscribeRegisteredBuyer(RegisteredBuyer registeredBuyer) {
         int option;
         System.out.println("Select on of the following" +
@@ -411,6 +465,7 @@ public class OnlineSystem {
                 if (option == 1) {
                     System.out.println("You have sucessfully unsubscirbed! (we'll miss you :[ )");
                     promotionList.getListOfSubscribers().remove(registeredBuyer);
+                    registeredBuyer.setSubscription(false);
                     break;
                 } else if (option == 2) {
                     System.out.println("Thanks for staying subscribed, we'll make sure to bring the best deals!");

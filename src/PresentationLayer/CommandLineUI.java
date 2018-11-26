@@ -65,18 +65,33 @@ public class CommandLineUI implements UserInterface {
         );
     }
 
-    public void showRegisteredMenu() {
-        System.out.println(
-                "\nPlease select from the following options!" +
-                        "\n1. Search for a book" +
-                        "\n2. Place an order" +
-                        "\n3. Make a payment" +
-                        "\n4. See promotions list" +
-                        "\n5. Unsubscribe from promotions list" +
-                        "\n6. Demo cover art" +
-                        "\n7. Simulate promotions list notification" +
-                        "\n8. Exit"
-        );
+    public void showRegisteredMenu(boolean status) {
+        if(status) {
+            System.out.println(
+                    "\nPlease select from the following options!" +
+                            "\n1. Search for a book" +
+                            "\n2. Place an order" +
+                            "\n3. Make a payment" +
+                            "\n4. See promotions list" +
+                            "\n5. Unsubscribe from promotions list" +
+                            "\n6. Demo cover art" +
+                            "\n7. Simulate promotions list notification" +
+                            "\n8. Exit"
+            );
+        }
+        else {
+            System.out.println(
+                    "\nPlease select from the following options!" +
+                            "\n1. Search for a book" +
+                            "\n2. Place an order" +
+                            "\n3. Make a payment" +
+                            "\n4. See promotions list" +
+                            "\n5. Resubscribe to promotions list" +
+                            "\n6. Demo cover art" +
+                            "\n7. Simulate promotions list notification" +
+                            "\n8. Exit"
+            );
+        }
     }
 
     @Override
@@ -114,32 +129,6 @@ public class CommandLineUI implements UserInterface {
 
     @Override
     public void showLoginPage() {
-        // legacy code
-//        // Logging in should query database, just a simplification to get UI running nicely
-//        reader.nextLine();
-//        System.out.println("Please type in your username");
-//        username = reader.nextLine();
-//        System.out.println("Please type in your password");
-//        String password = reader.nextLine();
-//
-//
-//
-//        // just here to test what user we want! can be removed after implementation of proper login
-//        while(true) {
-//            System.out.println("Please type in 1 for Operator, and 2 for Registered Buyer");
-//            userType = reader.nextInt();
-//            if(userType == 1) {
-//                showOperatorHomePage();
-//                break;
-//            }
-//            else if(userType == 2) {
-//                showRegisteredHomePage();
-//                break;
-//            }
-//            else {
-//                System.out.println("Your entry was not an option try again!");
-//            }
-//        }
     }
 
     @Override
@@ -244,7 +233,7 @@ public class CommandLineUI implements UserInterface {
                }
     	   }
     }
-    private void displayAllDocuments(ArrayList<Document> documents)
+    public void displayAllDocuments(ArrayList<Document> documents)
     {
        System.out.println("INDEX\tID\tNAME\t\t\tDATE\t\t\tPRICE\tQUANTITY\tAUTHORS");
 	   for(int i = 0; i<documents.size();i++)
@@ -317,6 +306,8 @@ public class CommandLineUI implements UserInterface {
     public void showUnsubscribePage() {
         System.out.println("Please confirm you'd wish to unsubscribe");
     }
+
+    public void showResubscribePage() { System.out.println("Please confirm you'd wish to subscribe"); }
 
     @Override
     public void showNotification() {
