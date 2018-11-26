@@ -1,9 +1,10 @@
 package PresentationLayer;
 
 import DomainLayer.*;
-import SharedElements.Document;
 
+import SharedElements.*;
 import javax.swing.*;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -57,7 +58,7 @@ public class CommandLineUI implements UserInterface {
 
     @Override
     public void showRegisteredHomePage(String username) {
-    	this.username = username;
+    	this.username = username; 
         System.out.println(
                         "\nWelcome " + username + " to BIG BOOK ENERGY.inc!"
         );
@@ -140,8 +141,16 @@ public class CommandLineUI implements UserInterface {
     }
 
     @Override
-    public void showSubmitDocumentPage() {
+    public Document showSubmitDocumentPage() {
         System.out.println("Document submission selected");
+    	System.out.println("Please specify the file type");
+    	String type = reader.nextLine();
+    	while(!type.equalsIgnoreCase("PDF")&&!type.equalsIgnoreCase("DOCX")&&!type.equalsIgnoreCase("PNG"))
+    	{
+    		System.out.println("Please enter a valid type");
+    		type = reader.nextLine();
+    	}
+    	return new Document(1, "hello", new ArrayList<Author>(), "10", type , 65);
     }
 
     @Override

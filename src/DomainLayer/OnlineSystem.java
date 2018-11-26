@@ -26,6 +26,7 @@ public class OnlineSystem {
     private PromotionList promotionList;
     private ArrayList<RegisteredBuyer> registeredBuyers;
     private ArrayList<StaffMember> staff;
+    private ArrayList<Document> documents;
 
     private OnlineSystem() {
         promotionList = new PromotionList();
@@ -117,7 +118,6 @@ public class OnlineSystem {
             }
         }
     }
-
     private void promptOperatorForMenuInput() {
         int option;
         while(true)
@@ -125,7 +125,7 @@ public class OnlineSystem {
                 ui.showOperatorMenu();
                 option = reader.nextInt();
                 if(option == 1) {
-                    ui.showSubmitDocumentPage();
+                    addDocument(ui.showSubmitDocumentPage());
                 }
                 else if (option == 2) {
                     ui.showRemoveDocumentPage();
@@ -354,7 +354,12 @@ public class OnlineSystem {
     }
 
     public void addDocument(Document document) {
-
+    	if (document.performUpload())
+    	{
+    		ddh.getDocumentDatabase().add(document);
+    	}
+    	else
+    		System.out.println("Could not perform upload");
     }
 
     public void updateDocument(Document document) {
@@ -366,7 +371,7 @@ public class OnlineSystem {
     }
 
     public ArrayList<Document> getDocumentList() {
-        return new ArrayList<Document>();
+        return ddh.getDocumentDatabase();
     }
 
     public void submitForPrinting(Document document) {
