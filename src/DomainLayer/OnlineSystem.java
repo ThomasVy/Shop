@@ -309,11 +309,13 @@ public class OnlineSystem {
         String address = reader.nextLine();
         Order theOrder = new Order(user, address);
         boolean orderComplete = false;
+        boolean orderCancelled = false;
         int option;
         while(true) {
             System.out.println("Please select an option!" +
                             "\n1. Search a book a book to add" +
-                            "\n2. View all books"
+                            "\n2. View all books" +
+                            "\n3. Cancel order"
                     );
             String integer = reader.nextLine();
             if(integer.compareTo("1") == 0) {
@@ -322,12 +324,15 @@ public class OnlineSystem {
             else if(integer.compareTo("2") == 0) {
                 ui.displayAllDocuments(ddh.getDocumentDatabase());
             }
+            else if(integer.compareTo("3") == 0) {
+                return;
+            }
             else {
                 System.out.println("Your entry is not an option");
             }
 
         }
-        while (!orderComplete) {
+        while (!orderComplete && !orderCancelled) {
             System.out.println("Enter the book you'd like to order");
             String query = reader.nextLine();
             Document document = searchForDocument(query);
@@ -345,7 +350,7 @@ public class OnlineSystem {
                 else {
                     ui.showBookFound(document);
                     theOrder.setAmount(theOrder.getAmount() + document.getPrice());
-                    document.setAvailableAmount(document.getAvailableAmount() - 1);
+                    document.takeAwayQuantity();
                     theOrder.getItems().add(document);
                     while (true) {
                         try {
@@ -353,7 +358,8 @@ public class OnlineSystem {
                             System.out.println("Would you like to add to your order?" +
                                     "\n1. Yes add more books" +
                                     "\n2. No that is all!" +
-                                    "\n3. View all books");
+                                    "\n3. View all books" +
+                                    "\n4. Cancel order");
                             option = reader.nextInt();
                             // if yes then prompt break loop and clear scanner
                             if (option == 1) {
@@ -371,12 +377,22 @@ public class OnlineSystem {
                             else if (option == 3) {
                                 ui.displayAllDocuments(ddh.getDocumentDatabase());
                             }
+                            else if(option == 4) {
+                                orderCancelled = true;
+                            }
                             else {
                                 System.out.println("Your entry was not an option try again!");
                             }
                         } catch (InputMismatchException ex2) {
                             System.out.println("Must be an integer value!");
                             reader.nextLine();
+                        }
+                        if(orderCancelled) {
+                            for(Document doc: theOrder.getItems()) {
+                                doc.setAvailableAmount(doc.getAvailableAmount() + doc.getQuantitySetAside());
+                                doc.setQuantitySetAside(0);
+                            }
+                            break;
                         }
                     }
                 }
