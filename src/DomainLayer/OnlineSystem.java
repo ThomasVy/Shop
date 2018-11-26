@@ -104,7 +104,7 @@ public class OnlineSystem {
                     }
                     break;
                 } else if (option == 2) {
-                    userType = 3;
+                    user = new OrdinaryBuyer();
                     ui.showUnregisteredHomePage();
                     promptUnregisteredUserForMenuInput();
                     break;
@@ -170,6 +170,8 @@ public class OnlineSystem {
                 }
                 else if (option == 3) {
                     ui.showMakePaymentPage();
+                    makePayment();
+
                 }
                 else if (option == 4) {
                     ui.showRegistrationPage();
@@ -208,6 +210,7 @@ public class OnlineSystem {
                 }
                 else if (option == 3) {
                     ui.showMakePaymentPage();
+                    makePayment();
                 }
 
                 else if (option == 4) {
@@ -335,7 +338,23 @@ public class OnlineSystem {
             return null;
     }
 
-
+    public void makePayment() {
+        double amountOwed = 0;
+        for(Order order: orders) {
+            // just here when we implement multi users using at same time
+            if(order.getBuyer().getUsername().compareTo(user.getUsername()) == 0);
+            {
+                for(Document docs: order.getItems()) {
+                    amountOwed += docs.getPrice();
+                }
+            }
+        }
+        System.out.println("You owe $" + amountOwed +
+                "\nPlease type in your credit card number: ");
+        String cardNumber = reader.nextLine();
+        reader.nextLine();
+        System.out.println("Thank you for your payment have a nice day!");
+    }
 
     public void registerOrdinaryBuyer(OrdinaryBuyer ordinaryBuyer) {
 

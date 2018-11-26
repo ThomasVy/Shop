@@ -1,5 +1,10 @@
 package SharedElements;
 
 public class OrdinaryBuyer extends User{
-    int id;
+    static int id;
+    String username;
+    public OrdinaryBuyer(){
+        id++;
+        username = "" + id;
+    }
 }
