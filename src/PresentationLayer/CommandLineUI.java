@@ -71,10 +71,11 @@ public class CommandLineUI implements UserInterface {
                         "\n1. Search for a book" +
                         "\n2. Place an order" +
                         "\n3. Make a payment" +
-                        "\n4. See promotions List" +
+                        "\n4. See promotions list" +
                         "\n5. Unsubscribe from promotions list" +
                         "\n6. Demo cover art" +
-                        "\n7. Exit"
+                        "\n7. Simulate promotions list notification" +
+                        "\n8. Exit"
         );
     }
 
@@ -322,8 +323,8 @@ public class CommandLineUI implements UserInterface {
     }
 
     @Override
-    public void showDocumentListPage() {
-        System.out.println("Here is the list of all the document's!");
+    public void showNotification() {
+        System.out.println("The promotions list has been updated");
     }
 
 }
