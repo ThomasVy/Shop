@@ -40,77 +40,45 @@ public class CommandLineUI implements UserInterface {
             System.out.println(
                     "\nWelcome to BIG BOOK ENERGY.inc!"
             );
-            int option;
-            while(true){
-                System.out.println(
-                        "\nPlease select from the following options!" +
-                                "\n1. Search for a book" +
-                                "\n2. Place an order" +
-                                "\n3. Make a payment" +
-                                "\n4. Register" +
-                                "\n5. Demo cover art" +
-                                "\n6. Exit" +
-                                "\n7. Testing Upload"
-                );
-                option = reader.nextInt();
-                if(option == 6) {
-                    System.out.println("\nHave a nice day! Please comeback again");
-                    System.exit(0);
-                }
-                else if(option == 7)
-                {
-                	System.out.println("Please specify the file type");
-                	String type = reader.nextLine();
-                	while(!type.equalsIgnoreCase("PDF")&&!type.equalsIgnoreCase("DOCX")&&!type.equalsIgnoreCase("PNG"))
-                	{
-                		System.out.println("Please enter a valid type");
-                		type = reader.nextLine();
-                	}
-                	OnlineSystem.getInstance().addDocument(new Document(1, "hello", new ArrayList<Author>(), "10", type , 65));
-                }
-                else if(option == 5) {
-                    demoCoverArt();
-                }
-                else {
-                    System.out.println("Your entry was not an option try again!");
-                }
-            }
+    }
+
+    public void showUnregisteredMenu(){
+
+        System.out.println(
+                "\nPlease select from the following options!" +
+                        "\n1. Search for a book" +
+                        "\n2. Place an order" +
+                        "\n3. Make a payment" +
+                        "\n4. Register" +
+                        "\n5. Demo cover art" +
+                        "\n6. Exit"
+        );
     }
 
     @Override
-    public void showRegisteredHomePage() {
+    public void showRegisteredHomePage(String username) {
+    	this.username = username; 
         System.out.println(
                         "\nWelcome " + username + " to BIG BOOK ENERGY.inc!"
         );
+    }
 
-        int option;
-        while (true) {
-            System.out.println(
-                    "\nPlease select from the following options!" +
-                            "\n1. Search for a book" +
-                            "\n2. Place an order" +
-                            "\n3. Make a payment" +
-                            "\n4. See promotions List" +
-                            "\n5. Unsubscribe from promotions list" +
-                            "\n6. Demo cover art" +
-                            "\n7. Exit"
-            );
-            option = reader.nextInt();
-            if (option == 7) {
-                System.out.println("\nHave a nice day! Please comeback again");
-                System.exit(1);
-            }
-            else if(option == 6) {
-                demoCoverArt();
-            }else {
-                System.out.println("Your entry was not an option try again!");
-            }
-        }
+    public void showRegisteredMenu() {
+        System.out.println(
+                "\nPlease select from the following options!" +
+                        "\n1. Search for a book" +
+                        "\n2. Place an order" +
+                        "\n3. Make a payment" +
+                        "\n4. See promotions List" +
+                        "\n5. Unsubscribe from promotions list" +
+                        "\n6. Demo cover art" +
+                        "\n7. Exit"
+        );
     }
 
     @Override
-    public void showOperatorHomePage() {
-
+    public void showOperatorHomePage(String username) {
+    	this.username = username;
         System.out.println(
                 "\nWelcome " + username + " to BIG BOOK ENERGY.inc!"
         );
@@ -172,18 +140,66 @@ public class CommandLineUI implements UserInterface {
     }
 
     @Override
-    public void showSubmitDocumentPage() {
+    public Document showSubmitDocumentPage() {
+        System.out.println("Document submission selected");
+    	System.out.println("Please specify the file type");
+    	String type = reader.nextLine();
+    	while(!type.equalsIgnoreCase("PDF")&&!type.equalsIgnoreCase("DOCX")&&!type.equalsIgnoreCase("PNG"))
+    	{
+    		System.out.println("Please enter a valid type");
+    		type = reader.nextLine();
+    	}
+    	return new Document(1, "hello", new ArrayList<Author>(), "10", type , 65);
+    }
 
+    @Override
+    public void showRemoveDocumentPage() {
+        System.out.println("Document removal selected");
+    }
+
+    @Override
+    public void showUpdateDocumentPage() {
+        System.out.println("Document update selected");
     }
 
     @Override
     public void showPromotionListPage() {
+        System.out.println("Here is the list of all the promotions!");
+    }
+
+    @Override
+    public void showBookSearchPage() {
+        System.out.println("Search the name of the book you're looking for!");
 
     }
 
     @Override
-    public void showDocumentListPage() {
+    public void showOrderPlacementPage() {
+        System.out.println("Confirm the order you'd like to place");
+    }
 
+    @Override
+    public void showMakePaymentPage() {
+        System.out.println("Confirm the payment you'd like to make");
+
+    }
+
+    @Override
+    public void showRegistrationPage() {
+        System.out.println("Thanks for choosing to register" +
+                            "please enter your username"
+        );
+
+    }
+
+    @Override
+    public void showUnsubscribePage() {
+        System.out.println("Please confirm you'd wish to unsubscribe");
+    }
+
+    @Override
+    public void showDocumentListPage() {
+        System.out.println("Here is the list of all the document's!");
     }
 
 }

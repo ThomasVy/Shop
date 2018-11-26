@@ -34,19 +34,24 @@ public class Document {
     	}
     	else if(type.equalsIgnoreCase("Docx"))
     	{
-    		upload = new UploadPng();
+    		upload = new UploadDocx();
     	}
     	else if(type.equalsIgnoreCase("PNG"))
     	{
-    		upload = new UploadDocx();
+    		upload = new UploadPng();
     	}
     	byte [] file = upload.openFileBrowser();
     	if(file == null)
+    	{
+    		System.out.println("I failed when file was being collected");
     		return false;
-    	
+    	}
     	location = upload.writeFileContent(file);
     	if(location == null)
+    	{
+    		System.out.println("Location failed");
     		return false;
+    	}
     	
     	return true;
     }
