@@ -5,7 +5,6 @@ import SharedElements.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CommandLineUI implements Observer {
@@ -20,7 +19,8 @@ public class CommandLineUI implements Observer {
                 "\nWould you like to enter as a registered user or enter to just shop?" +
                 "\nJust so you know registered users get access to exclusive deals!" +
                 "\n1. I'd like to login" +
-                "\n2. Continue as an unregistered user"
+                "\n2. Continue as an unregistered user" +
+                "\n3. Quit"
         );
     }
 
@@ -34,7 +34,7 @@ public class CommandLineUI implements Observer {
                 "\n2. Place an order" +
                 "\n3. Make a payment" +
                 "\n4. Register" +
-                "\n5. Demo cover art" +
+                "\n5. Simulate cover art" +
                 "\n6. Exit"
         );
     }
@@ -53,7 +53,7 @@ public class CommandLineUI implements Observer {
                             "\n3. Make a payment" +
                             "\n4. See promotions list" +
                             "\n5. Unsubscribe from promotions list" +
-                            "\n6. Demo cover art" +
+                            "\n6. Simulate cover art" +
                             "\n7. Simulate promotions list notification" +
                             "\n8. Exit"
             );
@@ -66,7 +66,7 @@ public class CommandLineUI implements Observer {
                             "\n3. Make a payment" +
                             "\n4. See promotions list" +
                             "\n5. Resubscribe to promotions list" +
-                            "\n6. Demo cover art" +
+                            "\n6. Simulate cover art" +
                             "\n7. Simulate promotions list notification" +
                             "\n8. Exit"
             );

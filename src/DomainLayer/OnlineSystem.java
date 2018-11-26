@@ -95,6 +95,7 @@ public class OnlineSystem {
 
     public void establishUser() {
         ui.showStartingPage();
+        orders = new ArrayList<Order>();
         // Check user input
         boolean done = false;
         while (!done) {
@@ -125,6 +126,8 @@ public class OnlineSystem {
                     ui.showUnregisteredHomePage();
                     promptUnregisteredUserForMenuInput();
                     break;
+                } else if (option == 3) {
+                    System.exit(1);
                 } else {
                     System.out.println("\nYour entry was not an option try again!");
                 }
@@ -163,7 +166,7 @@ public class OnlineSystem {
                 	String date =  reader.nextLine();
                 	System.out.println("Enter the price of the document:");
                 	double price =  Double.parseDouble(reader.nextLine());
-                	System.out.print("Enter the quantity of the document available");
+                	System.out.println("Enter the quantity of the document available:");
                 	int quantity = Integer.parseInt(reader.nextLine());
                 	Document doc = new Document(id, name, authors, date, type , quantity, price);
                 	if(doc.performUpload())
@@ -183,7 +186,7 @@ public class OnlineSystem {
                     int removalIndex;
                     while (true) {
                         try {
-                            removalIndex = reader.nextInt();
+                            removalIndex = Integer.parseInt(reader.nextLine());
                             if (removalIndex >= 0 && removalIndex < ddh.getDocumentDatabase().size())
                                 break;
                         } catch (InputMismatchException e) {
@@ -197,7 +200,7 @@ public class OnlineSystem {
                     int updateIndex;
                     while (true) {
                         try {
-                            updateIndex = reader.nextInt();
+                            updateIndex = Integer.parseInt(reader.nextLine());
                             if (updateIndex >= 0 && updateIndex < ddh.getDocumentDatabase().size())
                                 break;
                         } catch (InputMismatchException e) {
@@ -211,7 +214,7 @@ public class OnlineSystem {
                     ui.demoCoverArt();
                 } else if (option == 5) {
                     System.out.println("Have a nice day! Please comeback again");
-                    System.exit(1);
+                    establishUser();
                 } else {
                     System.out.println("Your entry was not an option try again!");
                 }
@@ -301,7 +304,7 @@ public class OnlineSystem {
                     ui.demoCoverArt();
                 } else if (option == 6) {
                     System.out.println("Thanks for coming!");
-                    System.exit(1);
+                    establishUser();
                 }
 
             } catch (InputMismatchException ex) {
@@ -346,11 +349,9 @@ public class OnlineSystem {
                 } else if (option == 7) {
                     promotionList.addPromotion();
                     notifyAllObservers();
-                } else if (option == 7) {
-                    ui.demoCoverArt();
                 } else if (option == 8) {
                     System.out.println("\nHave a nice day! Please comeback again");
-                    System.exit(1);
+                    establishUser();
                 } else {
                     System.out.println("Your entry was not an option try again!");
                 }
@@ -389,6 +390,7 @@ public class OnlineSystem {
         String email = reader.nextLine();
         RegisteredBuyer rb = new RegisteredBuyer(username, password, name, email);
         udh.insert(rb);
+        promotionList.getListOfSubscribers().add(rb);
         establishUser();
     }
 
@@ -401,7 +403,7 @@ public class OnlineSystem {
         int option;
         while(true) {
             System.out.println("Please select an option!" +
-                            "\n1. Search a book a book to add" +
+                            "\n1. Search a book to add" +
                             "\n2. View all books" +
                             "\n3. Cancel order"
                     );

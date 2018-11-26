@@ -2,13 +2,17 @@ package DomainLayer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class CoverPanel extends JPanel {
 
     Artwork art;
 
     public CoverPanel() {
-        art = new Cover("J:\\School\\softengyear3\\ENSF480\\ENSF480Project\\src\\seriousbook.jpg",60, 80);
+        String extension = "\\img\\seriousbook.jpg";
+        Path path = Paths.get(System.getProperty("user.dir"), extension);
+        art = new Cover(path.toString(),60, 80);
     }
 
     public void paintComponent(Graphics g) {
