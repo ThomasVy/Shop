@@ -29,6 +29,7 @@ public class OnlineSystem {
 
     private OnlineSystem() {
         promotionList = new PromotionList();
+        orders = new ArrayList<Order>();
     }
 
     public void startup(CommandLineUI ui) {
@@ -190,10 +191,15 @@ public class OnlineSystem {
                 ui.showRegisteredMenu();
                 option = reader.nextInt();
                 if (option == 1) {
+                    reader.nextLine();
                     ui.showBookSearchPage();
+                    String document = reader.nextLine();
+                    ui.showBookFound(searchForDocument(document));
                 }
                 else if (option == 2) {
+                    reader.nextLine();
                     ui.showOrderPlacementPage();
+                    composeOrder();
                 }
                 else if (option == 3) {
                     ui.showMakePaymentPage();
@@ -243,13 +249,75 @@ public class OnlineSystem {
         return udh.verifyUser(username, password);
     }
 
-    public void placeOrder(Order order) {
+    public void composeOrder() {
+        Order theOrder = new Order(user);
+        boolean orderComplete = false;
+        while(!orderComplete) {
+            String query = reader.nextLine();
+            int option;
+            Document document = searchForDocument(query);
+            if(document == null)
+            {
+                System.out.println("No book with that name found! SORRY!");
+            }
+            else {
+                if (document.getAvailableAmount() == 0) {
+                    System.out.println("Sorry we are out of stock!");
+                } else {
+                    ui.showBookFound(document);
+                    theOrder.setAmount(theOrder.getAmount() + document.getPrice());
+                    document.setAvailableAmount(document.getAvailableAmount() - 1);
+                    while (true) {
+                        try {
+                            System.out.println("Would you like to add to your order?" +
+                                    "\n1. Yes add more books" +
+                                    "\n2. No that is all!");
+                            option = reader.nextInt();
+                            if (option == 1) {
+                                System.out.println("Enter the next book you'd like to search");
+                                reader.nextLine();
+                                break;
+                            } else if (option == 2) {
+                                orderComplete = true;
+                                placeOrder(theOrder);
+                                reader.nextLine();
+                                break;
+                            } else {
+                                System.out.println("Your entry was not an option try again!");
+                            }
+                        } catch (InputMismatchException ex2) {
+                            System.out.println("Must be an integer value!");
+                            reader.nextLine();
+                        }
+                    }
+                }
+            }
+        }
+    }
 
+    public void placeOrder(Order order) {
+        orders.add(order);
     }
 
     public Document searchForDocument(String query) {
-        return new Document(-1,null, null);
+        ArrayList<Document> documents = ddh.getDocumentDatabase();
+        if(documents == null)
+        {
+            System.out.println("ERROR: Database fatal error");
+        }
+        else
+        {
+            for(Document doc: documents) {
+                if(doc.getName().compareToIgnoreCase(query) == 0) {
+                        return doc;
+                    }
+                }
+            }
+
+            return null;
     }
+
+
 
     public void registerOrdinaryBuyer(OrdinaryBuyer ordinaryBuyer) {
 

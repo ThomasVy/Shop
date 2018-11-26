@@ -172,9 +172,24 @@ public class CommandLineUI implements UserInterface {
 
     }
 
+    public void showBookFound(Document document) {
+        if(document == null)
+            System.out.println("No book with that name found! SORRY!");
+        else {
+            System.out.print("\n" + document.getName() +"   by");
+            for(Author author: document.getAuthors())
+            {
+                System.out.print("    " + author.getName());
+            }
+            System.out.println("  $" + document.getPrice() +
+                    "  " + document.getAvailableAmount() + " available");
+        }
+    }
+
     @Override
     public void showOrderPlacementPage() {
-        System.out.println("Confirm the order you'd like to place");
+        System.out.println("Compose the order you'd like to place");
+        System.out.println("Please search the book you'd like to order");
     }
 
     @Override

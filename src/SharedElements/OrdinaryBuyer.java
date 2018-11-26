@@ -1,5 +1,5 @@
 package SharedElements;
 
-public class OrdinaryBuyer {
+public class OrdinaryBuyer extends User{
     int id;
 }
