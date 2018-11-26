@@ -3,6 +3,8 @@ package PresentationLayer;
 import DomainLayer.Observer;
 import SharedElements.Document;
 
+import java.util.ArrayList;
+
 public interface UserInterface extends Observer{
 
     public void showStartingPage();
@@ -15,7 +17,7 @@ public interface UserInterface extends Observer{
     public Document showSubmitDocumentPage();
     public void showRemoveDocumentPage();
     public void showUpdateDocumentPage();
-    public void showPromotionListPage();
+    public void showPromotionListPage(ArrayList<Document> promotionList);
     public void showBookSearchPage();
     public void showOrderPlacementPage();
     public void showMakePaymentPage();

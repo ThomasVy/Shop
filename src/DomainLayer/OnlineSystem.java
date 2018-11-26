@@ -29,6 +29,7 @@ public class OnlineSystem {
     private ArrayList<Document> documents;
 
     private OnlineSystem() {
+        promotionList = new PromotionList();
     }
 
     public void startup(CommandLineUI ui) {
@@ -40,6 +41,9 @@ public class OnlineSystem {
         ArrayList<Document> dd = ddh.getDocumentDatabase();
         ArrayList<User> ud = udh.getUserDatabase();
 
+        //just testing promotions list things
+        promotionList.setListOfPromotions(dd);
+
         RegisteredBuyer rb1 = new RegisteredBuyer("d.yau", "password", "Douglas Yau", "d.yau@gmail.com");
         RegisteredBuyer rb2 = new RegisteredBuyer("e.ubalde", "password", "Errolle Ubalde", "e.ubalde@gmail.com");
         Manager m1 = new Manager("g.oblea", "password", "Gabriel Oblea", "g.oblea@gmail.com");
@@ -48,6 +52,13 @@ public class OnlineSystem {
         Operator o2 = new Operator("r.lim", "password", "Rainer Lim", "r.lim@gmail.com");
         SystemAdmin sa1 = new SystemAdmin("s.schroh", "password", "Sebastian Schroh", "s.schroh", 1);
         SystemAdmin sa2 = new SystemAdmin("t.vy", "password", "Thomas Vy", "t.vy", 2);
+
+        //just testing promotions list things
+        promotionList.setListOfPromotions(dd);
+        promotionList.setListOfSubscribers(new ArrayList<RegisteredBuyer>());
+
+        promotionList.getListOfSubscribers().add(rb1);
+        promotionList.getListOfSubscribers().add(rb2);
 
         ud.add(rb1);
         ud.add(rb2);
@@ -189,11 +200,15 @@ public class OnlineSystem {
                 }
 
                 else if (option == 4) {
-                    ui.showPromotionListPage();
+                    if(promotionList.getListOfSubscribers().contains(user))
+                        ui.showPromotionListPage(promotionList.getListOfPromotions());
+                    else
+                        System.out.println("Sorry you unsubscribed from the promotions list!");
                 }
 
                 else if (option == 5) {
                     ui.showUnsubscribePage();
+                    unsubscribeRegisteredBuyer((RegisteredBuyer) user);
                 }
                 else if (option == 6) {
                     ui.demoCoverArt();
@@ -240,7 +255,29 @@ public class OnlineSystem {
     }
 
     public void unsubscribeRegisteredBuyer(RegisteredBuyer registeredBuyer) {
-
+        int option;
+        System.out.println("Select on of the following" +
+                "\n1. Yes I'd Like to unsubscribe" +
+                "\n2. No I would like to stay subscribed");
+        while(true) {
+            try {
+                option = reader.nextInt();
+                if (option == 1) {
+                    System.out.println("You have sucessfully unsubscirbed! (we'll miss you :[ )");
+                    promotionList.getListOfSubscribers().remove(registeredBuyer);
+                    break;
+                }
+                else if (option == 2) {
+                    System.out.println("Thanks for staying subscribed, we'll make sure to bring the best deals!");
+                    break;
+                } else {
+                    System.out.println("You selected an option not available!");
+                }
+            } catch (InputMismatchException ex) {
+                reader.nextLine();
+                System.out.println("Must be an integer value!");
+            }
+        }
     }
 
     public ArrayList<Document> getPromotionList() {
@@ -250,9 +287,10 @@ public class OnlineSystem {
     public void addDocument(Document document) {
     	if (document.performUpload())
     	{
-    		System.out.println("Succ");
     		ddh.getDocumentDatabase().add(document);
     	}
+    	else
+    		System.out.println("Could not perform upload");
     }
 
     public void updateDocument(Document document) {

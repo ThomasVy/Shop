@@ -43,16 +43,24 @@ public class Document {
     	byte [] file = upload.openFileBrowser();
     	if(file == null)
     	{
-    		System.out.println("I failed when file was being collected");
     		return false;
     	}
     	location = upload.writeFileContent(file);
     	if(location == null)
     	{
-    		System.out.println("Location failed");
     		return false;
     	}
     	
     	return true;
     }
+    public Document(int documentID, String name, ArrayList<Author> authors) {
+        this.documentId = documentID;
+        this.name = name;
+        this.authors = authors;
+    }
+
+    public String getName() { return name; }
+
+    public ArrayList<Author> getAuthors(){ return authors; }
+
 }

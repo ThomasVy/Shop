@@ -5,4 +5,10 @@ public class Author {
     private char sex;
     private int age;
     private String location;
+
+    public Author(String name) {
+        this.name = name;
+    }
+
+    public String getName(){ return name; }
 }
