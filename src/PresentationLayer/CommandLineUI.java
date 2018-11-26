@@ -11,6 +11,10 @@ import java.util.Scanner;
 public class CommandLineUI implements Observer {
     Scanner reader = new Scanner(System.in);
 
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
+
     public void showStartingPage() {
         System.out.println("\nWelcome to BIG BOOK ENERGY, Inc!" +
                 "\nWould you like to enter as a registered user or enter to just shop?" +
@@ -191,7 +195,6 @@ public class CommandLineUI implements Observer {
         }
     }
 
-
     public void showPromotionsListPage(ArrayList<Document> promotionList) {
         System.out.println("\nHere is the list of all the promotions:");
         for (Document promotion : promotionList) {
@@ -238,7 +241,6 @@ public class CommandLineUI implements Observer {
     public void showMakePaymentPage() {
         System.out.println("\nConfirm the payment you'd like to make.");
     }
-
 
     public void showRegistrationPage() {
         System.out.println("\nThanks for choosing to register!");
