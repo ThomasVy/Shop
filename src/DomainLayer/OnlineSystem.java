@@ -141,11 +141,55 @@ public class OnlineSystem {
                 ui.showOperatorMenu();
                 option = reader.nextInt();
                 if (option == 1) {
-                    addDocument(ui.showSubmitDocumentPage());
+                	String type = reader.nextLine();
+                	while(!type.equalsIgnoreCase("PDF")&&!type.equalsIgnoreCase("DOCX")&&!type.equalsIgnoreCase("PNG"))
+                	{
+                		System.out.println("Please enter a valid type");
+                		type = reader.nextLine();
+                	}
+                	int id = -1;
+                	while(id<0)
+                	{
+	                	System.out.println("Enter the document Id (must be greater than 0):");
+	                	id = Integer.parseInt(reader.nextLine());
+                	}
+                	System.out.println("Enter the book name:");
+                	String name = reader.nextLine();
+                    ArrayList<Author> authors = new ArrayList<Author>();
+            		ui.showAuthorOptions();
+            		int authorOption = Integer.parseInt((reader.nextLine()));
+            		while(authorOption !=3 ) {
+            			if(authorOption ==1)
+            			{
+        				  System.out.println("Tell me the Author's name to Add");
+                          authors.add(new Author(reader.nextLine()));
+            			}
+            			else if(authorOption==2)
+            			{
+            				  System.out.println("Tell me the Author's name to Delete");
+                              for(int i =0 ; i<authors.size(); i++)
+                              {
+                               	   if(authors.get(i).getName().equalsIgnoreCase(reader.nextLine())) {
+                               		   authors.remove(i);
+                               		   break;
+                               	   }
+                              }
+            			}
+            			ui.showAuthorOptions();
+            			authorOption = Integer.parseInt((reader.nextLine()));
+            		}
+                	System.out.println("Enter the date the document was created:");
+                	String date =  reader.nextLine();
+                	System.out.println("Enter the price of the document:");
+                	double price =  Double.parseDouble(reader.nextLine());
+                	System.out.print("Enter the quantity of the document available");
+                	int quantity = Integer.parseInt(reader.nextLine());
+                	ddh.insert(new Document(id, name, authors, date, type , quantity, 12.99));
+                	
                 } else if (option == 2) {
                     ui.showRemoveDocumentPage(ddh.getDocumentDatabase());
                     if (ddh.getDocumentDatabase().size() == 0) {
-                        System.out.println("Sorry! There are no documents avaliable.");
+                        System.out.println("Sorry! There are no documents available.");
                         continue;
                     }
                     int removalIndex;

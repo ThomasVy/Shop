@@ -102,17 +102,9 @@ public class CommandLineUI implements Observer {
 
     }
 
-    public Document showSubmitDocumentPage() {
+    public void showSubmitDocumentPage() {
         System.out.println("Document submission selected");
     	System.out.println("Please specify the file type");
-    	String type = reader.nextLine();
-    	while(!type.equalsIgnoreCase("PDF")&&!type.equalsIgnoreCase("DOCX")&&!type.equalsIgnoreCase("PNG"))
-    	{
-    		System.out.println("Please enter a valid type");
-    		type = reader.nextLine();
-    	}
-    	return new Document(1, "A Long Book", new ArrayList<Author>(), "November 25, 2018", type , 65, 12.99);
-
     }
 
     public void showRemoveDocumentPage(ArrayList<Document> documents) {
