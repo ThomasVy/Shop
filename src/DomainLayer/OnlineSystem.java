@@ -264,28 +264,37 @@ public class OnlineSystem {
             String query = reader.nextLine();
             int option;
             Document document = searchForDocument(query);
+            // if document doesn't exist print an error
             if(document == null)
             {
                 System.out.println("No book with that name found! SORRY!");
             }
+            // if document exists continue
             else {
+                // if document is out of stock print an error
                 if (document.getAvailableAmount() == 0) {
                     System.out.println("Sorry we are out of stock!");
-                } else {
+                }
+                // else if document is in stock show it and add it to the order
+                else {
                     ui.showBookFound(document);
                     theOrder.setAmount(theOrder.getAmount() + document.getPrice());
                     document.setAvailableAmount(document.getAvailableAmount() - 1);
                     theOrder.getItems().add(document);
                     while (true) {
                         try {
+                            // prompt the user if they'd like to add more to the order
                             System.out.println("Would you like to add to your order?" +
                                     "\n1. Yes add more books" +
                                     "\n2. No that is all!");
                             option = reader.nextInt();
+                            // if yes then prompt break loop and clear scanner
                             if (option == 1) {
                                 reader.nextLine();
                                 break;
-                            } else if (option == 2) {
+                            }
+                            // if not then set order as complete place it and show the receipt
+                            else if (option == 2) {
                                 orderComplete = true;
                                 placeOrder(theOrder);
                                 ui.showFinalOrder(theOrder);
