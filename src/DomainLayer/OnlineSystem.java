@@ -173,7 +173,7 @@ public class OnlineSystem {
                         }
                         System.out.println("Please try again");
                     }
-                    ui.changeDocument(ddh.getDocumentDatabase().get(updateIndex));
+                    ui.showDocumentUpdateOptions(ddh.getDocumentDatabase().get(updateIndex));
                 } else if (option == 4) {
                     ui.demoCoverArt();
                 } else if (option == 5) {
@@ -243,17 +243,17 @@ public class OnlineSystem {
                     makePayment();
                 } else if (option == 4) {
                     if (promotionList.getListOfSubscribers().contains(user))
-                        ui.showPromotionListPage(promotionList.getListOfPromotions());
+                        ui.showPromotionsListPage(promotionList.getListOfPromotions());
                     else
                         System.out.println("Sorry you unsubscribed from the promotions list!");
                 } else if (option == 5) {
                     ui.showUnsubscribePage();
                     unsubscribeRegisteredBuyer((RegisteredBuyer) user);
                 } else if (option == 6) {
-                    ui.demoCoverArt();
-                } else if (option == 7) {
                     promotionList.addPromotion();
                     notifyAllObservers();
+                } else if (option == 7) {
+                    ui.demoCoverArt();
                 } else if (option == 8) {
                     System.out.println("\nHave a nice day! Please comeback again");
                     System.exit(1);
